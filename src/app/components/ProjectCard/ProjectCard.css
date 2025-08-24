@@ -1,0 +1,127 @@
+/* Basic styling for the card container */
+.project-card {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  border-radius: 32px;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Media wrapper for positioning metrics */
+.project-card__media-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.project-card__media {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Metrics pills positioned over the media */
+.project-card__metrics {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.project-card__metric-pill {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Content section styling */
+.project-card__content {
+  padding: 16px;
+}
+
+.project-card__headline {
+  font-size: 2rem;
+  width: 70%;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #111;
+}
+
+.project-card__description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.project-card__cta {
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.project-card__cta:hover {
+  color: #000;
+}
+
+/* == Horizontal Layout Specifics == */
+.project-card--horizontal .project-card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.project-card--horizontal .project-card__cta {
+  background-color: #111;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  white-space: nowrap; /* Prevents text wrap */
+  transition: background-color 0.2s;
+}
+
+.project-card--horizontal .project-card__cta:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+/* == Vertical Layout Specifics == */
+.project-card--vertical {
+  background-color: #fff; /* Vertical card has a white background */
+}
+
+.project-card--vertical .project-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.project-card--vertical .project-card__headline {
+  font-size: 18px; /* Slightly smaller for vertical */
+}
+
+/* The CTA is just a simple link in vertical mode */
+.project-card--vertical .project-card__cta {
+  font-size: 15px;
+  color: #555;
+}
+
+/* Hide the arrow in vertical mode */
+.project-card--vertical .project-card__cta-arrow {
+  display: none;
+}

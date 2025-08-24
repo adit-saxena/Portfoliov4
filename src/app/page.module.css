@@ -1,0 +1,521 @@
+/* page.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+.container {
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: 20px 20px;
+  background: #ffffff;
+  cursor: url('/cursor.png'), auto;
+  
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 4vw; /* Ensure padding matches the container */
+  position: fixed; /* Keeps the header on top */
+  top: 0; /* Ensure it starts from the top */
+  left: 0;
+  width: 100%; /* Full width of the viewport */
+  z-index: 1000; /* Ensures it's above all other elements */
+  background: rgba(255, 255, 255, 0); /* Transparent white */
+  backdrop-filter: blur(10px); /* Blurry effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+}
+
+.backLink {
+  display: inline-flex; /* Use flex to align icon and text */
+  align-items: center;  /* Vertically center icon and text */
+  gap: 0.4rem;         /* Space between icon and text */
+  text-decoration: none; /* Optional: Remove underline if it's an anchor */
+  color: black;       /* Optional: Inherit color from parent */
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+
+  /* Add any other styling like font-size, color, etc. */
+}
+
+.backLink svg { /* Style the icon itself if needed */
+  width: 1.2em; /* Example size */
+  height: 1.2em; /* Example size */
+}
+
+.resumeButton {
+  /* Your styles for the resume button */
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc; /* Example */
+  border-radius: 4px; /* Example */
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardrow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8vh;
+  margin-bottom: 6vh;
+
+}
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+  margin-bottom: 16vh;
+  align-items: center;
+  text-align: center;
+  gap: 3vh;
+  z-index: 100;
+}
+.aurora-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: 
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 60%),
+    url('/background.png') center/cover no-repeat;
+  opacity: 0.02;
+}
+
+
+.hero h2{
+font-size: 4rem;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-weight: 900;
+color: #000;
+z-index: 100;
+}
+
+.whennot{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.whennotside{
+font-size: 1.6rem;
+font-weight: 600;
+color: #9E9E9E;
+z-index: 100;
+}
+
+.whennotmain{
+font-size: 1.6rem;
+font-weight: 400;
+color: #3e3e3e;
+z-index: 100;
+}
+
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 16vh;
+  margin-bottom: 4vh;
+  width: 100%;
+  align-items: center;
+}
+
+.footer span{
+  color: red;
+  font-weight: 900;
+}
+
+.footer h2{
+font-size: 2rem;
+font-weight: 600;
+color: #fff;
+}
+
+.outerbox {
+  display: flex;
+  flex-direction: row;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.2);
+  height: 80vh;
+}
+
+.tagrow{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1vw;
+}
+
+.experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+
+.heroproject {
+  display: flex;
+  justify-content: center; /* Center the images horizontally */
+  background-color: powderblue;
+}
+
+.heroimage {
+  max-width: 40vw; /* Ensure images scale well */
+  height: auto;
+  object-fit: contain; /* Prevent image distortion */
+}
+
+.leftcol{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding-left: 4vw;
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+}
+
+.leftcol h3{
+  color: aliceblue;
+  font-size: 2.4rem;
+  margin-top: auto;
+}
+
+.rightcol{
+  display: flex;
+  width: 50%;
+  justify-content: flex-end; /* Push image to the right */
+  margin-left: auto;
+}
+
+.rightcol img{
+  object-fit:cover;
+  height: auto;
+  width: 100%; /* Ensures the image fills the right column */
+  max-height: 80vh;
+}
+
+
+.heroText {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f1f1f;
+  transition: transform 1.5s ease-in-out, font-size 1.5s ease-in-out, top 1.5s ease-in-out;
+  position: relative;
+}
+
+.animate .heroText {
+  font-size: 1rem; /* Adjust to nav text size */
+  transform: translateY(-200vh); /* Move upward */
+  position: fixed;
+  top: 2vh; /* Align to the nav bar */
+  left: 4vw; /* Adjust to nav positioning */
+  color: #3d3d3d; /* Optional: Match nav text color */
+}
+
+.tag {
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 48px;
+  background-color:rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: 400;
+}
+
+.header p {
+  font-size: 1rem;
+  color: #000;
+}
+
+.heroproject{
+  display: flex;
+  flex-direction: row;
+  background-color: powderblue;
+  margin-top: 6vh;
+}
+
+.mydescription {
+  max-width: 35vw;
+  color: #3d3d3d;
+  text-align: center;
+  display: none;  /* Initially hidden */
+  opacity: 0;  /* Add opacity to handle smooth transition */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for showing */
+}
+
+.mydescription.show {
+  display: block;  /* Show the description after scrolling */
+  opacity: 1;  /* Make it fully visible */
+}
+
+.projectContainer {
+  display: flex;
+  flex-direction: row; /* Align text and image horizontally */
+  justify-content: space-between;
+  margin: 3rem 5vw;
+}
+
+.textContainer {
+  flex: 1;
+  padding: 1rem;
+  max-width: 50%; /* Limit the width of the text section */
+}
+
+.projectTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3b3b3b;
+  margin-bottom: 1rem;
+}
+
+.projectSubtitle {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #6b6b6b;
+  margin-bottom: 1.5rem;
+}
+
+.projectAuthor {
+  font-size: 1rem;
+  color: #7b7b7b;
+}
+
+.imageContainer {
+  flex: 1;
+  max-width: 50%;
+  padding: 1rem;
+}
+
+.imageContainer img {
+  border-radius: 12px; /* Optional: rounded corners for the image */
+  max-width: 100%;
+  height: auto;
+}
+
+.herotext{
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.mydescriptionhero {
+  max-width: 50vw;
+  font-size: 2rem;
+  margin-top: 20vh;
+  text-align: center;
+  color:#3d3d3d;
+  text-align: center;
+}
+
+.leftmenu{
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.mydescription span{
+  color: red;
+  font-weight: 600;
+}
+.mydescriptionhero span{
+  color: red;
+  font-weight: 600;
+}
+
+.nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+}
+.tabs {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+.activeTab {
+  font-weight: bold;
+  color: #3d3d3d; /* Highlight color for the active tab */
+}
+.activeTab::after {
+  content: '';
+  position: absolute;
+  left: 35%;
+  bottom: -4px;
+  width: 30%;
+  height: 4px;
+  background-color: green; /* Same as the text highlight color */
+  border-radius: 20%;
+}
+.rightmenu{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+}
+.resumeButton {
+  display: flex;
+  transition: ease-in-out 0.2s;
+  color: #000;
+  border: #000 solid 1px;
+  font-size: 1rem;
+  padding: 10px 24px;
+  border-radius: 48px;
+  align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+}
+.cuttochase {
+  display: flex;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  font-family: "Space Grotesk", sans-serif;
+  color: #000;
+  border: #000 solid 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 4vh;
+  padding: 12px 24px;
+  border-radius: 48px;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cuttochase:hover {
+  transform: scale(1.05); /* grow smoothly */
+  color: #fff;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+
+
+.resumeButton2 {
+  display: flex;
+  transition: ease-in-out 0.2s;
+  background-color: rgba(255, 255, 255, 0);
+  /* background-color: #07021D; */
+  color: black;
+  border: #000 solid 1px;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 48px;
+  align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+}
+.resumeButton:hover {
+ background-color: rgba(0, 0, 0, 1);
+ color: #fff;
+ border: #000 solid 1px;
+}
+.resumeButton2:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.intro {
+  width: 70vw;
+  margin-right: auto;
+  margin-top: 30vh;
+  position: relative;
+  height: 50vh;
+}
+.intro p{
+  font-weight: 500;
+}
+.heroimage{
+  aspect-ratio: fixed;
+  max-width: 40vw;
+  margin-right: auto;
+  
+}
+.intro h1 {
+  font-size: 2.4rem;
+  line-height: 1.4;
+  margin-bottom: 6vh;
+  font-weight: 600;
+  text-align: left;
+}
+.intro em {
+  font-style: italic;
+  color: #ff4500; /* Adjust branding color */
+}
+.intro .highlight {
+  color: red;
+  font-weight: bold;
+}
+.logos {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+  gap: 1rem;
+  position: relative;
+}
+.work {
+  display: flex;
+  width: 70vw;
+  flex-direction: column;
+  gap: 10vh;
+}
+
+/* New Styles for the Animated Background */
+
+@media screen and (max-width: 500px) {
+  .outerbox{
+    flex-direction: column-reverse;
+    padding:12px;
+  }
+
+  .cardrow{
+    display: none;
+  }
+  
+  .whennot{
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 2vh;
+  }
+
+
+  .tagline{
+    display: none;
+  }
+
+  .tagrow{
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 4vh;
+    margin-top: 2vh;
+  }
+
+  .leftcol{
+    width: 100%;
+    margin-bottom: 2vh;
+  }
+  .rightcol{
+    width: 100%;
+  }
+
+  .hero{
+    width: 100vw;
+  }
+
+  .work{
+    width: 90vw;
+    gap: 6vh;
+  }
+
+  .work h3{
+    font-size: 2rem;
+  }
+
+  .footer{
+    margin-top: 8vh;
+  }
+
+  .container{
+    background-color: #fff;
+  }
+}

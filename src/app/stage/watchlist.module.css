@@ -1,0 +1,121 @@
+.container {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    padding: 0 4vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: url('/cursor.png'), auto;
+    background-color: white;
+}
+
+.hero{
+  margin-top: 14vh;
+  width: 100%;
+  margin-right: auto;
+  color: black;
+}
+
+.hero img{
+  max-height: 50vh;
+}
+
+.hero h5{
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.hero p{
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.hero h4{
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: darkgrey;
+}
+
+.container h3{
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.description p{
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.herotext{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.heroimg{
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.hero img{
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.work{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.workrow{
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.description{
+  max-width: 40vw;
+  margin-right: auto;
+  line-height: 190%;
+  color: #3d3d3d;
+}
+
+.description strong{
+  font-weight: 600;
+}
+
+.heading{
+  margin-left: 1vw;
+  margin-right: 10vw;
+  width: 15vw;
+  color: grey;
+}
+
+.serial{
+  margin-left: 6vw;
+  width: 5vw;
+  color: darkgrey;
+}
+
+@media screen and (max-width: 500px) {
+  .workrow{
+    flex-direction: column;
+    width: 100%;
+  } 
+  .description{
+    max-width: 100%;
+  }
+  .heading{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  .serial{
+    margin-left: 0;
+    max-width: 100%;
+  }
+}

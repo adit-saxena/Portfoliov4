@@ -1,0 +1,28 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  
+  
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+
+@media screen and (max-width: 500px) {
+  .text-type {
+    max-width: 90vw;
+  }
+}

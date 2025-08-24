@@ -1,0 +1,45 @@
+/* In Card.css */
+.card {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
+  /* 👇 REMOVED 'transform' from the transition */
+  transition: box-shadow 0.25s ease;
+  position: relative;
+}
+
+/* 👇 DELETED the entire .card:hover block */
+/*
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+*/
+
+.card-image {
+  /* ...styles remain the same... */
+  width: 10vw;
+  height: 10vw;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.card-text {
+  /* ...styles remain the same... */
+  width: 10vw;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  color: #3d3d3d;
+  margin: 12px 0 0 0;
+}
