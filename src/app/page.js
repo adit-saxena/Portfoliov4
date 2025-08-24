@@ -22,7 +22,7 @@ export default function Home() {
   }, [pathname]);
 
   const handleLinkClick = () => {
-    setIsLoading(true);
+    setIsLoading(true); 
   };
 
   return (
