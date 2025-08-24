@@ -8,9 +8,8 @@ import styles from './page.module.css';
 import WorkNew from './components/worknew';
 import dynamic from 'next/dynamic';
 
-const Footer = dynamic(() => import('./components/footer2'), { ssr: false });
-const Loader = dynamic(() => import('./components/loader'), { ssr: false });
-const Aurora = dynamic(() => import('../../background/Aurora/Aurora'), { ssr: false });
+const Footer = dynamic(() => import('./components/Footer/footer2'), { ssr: false });
+const Loader = dynamic(() => import('./components/Loader/loader.js'), { ssr: false });
 const AnimatedCard = dynamic(() => import('./components/AnimatedCard'), { ssr: false });
 const ProjectCard = dynamic(() => import('./components/ProjectCard/ProjectCard.jsx'), { ssr: false });
 

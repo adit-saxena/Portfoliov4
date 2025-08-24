@@ -1,12 +1,14 @@
 // src/app/schmooze/page.js
-
-import { AlignCenter, AlignJustify } from 'lucide-react'; // Added import back if you need it
+"use client";
 import HeaderP from '../components/headerProjects';
-import stylesw from '../stage/watchlist.module.css'; // Using stage styles
+import stylesw from '../stage/internal.module.css'; // Using stage styles
 import Workrow from '../stage/workrow';
 import SolutionBlock from '../components/SolutionBlock'; // <--- IMPORT THE NEW COMPONENT
+import dynamic from 'next/dynamic';
 // Import the Next.js Image component if you plan to use it
 // import Image from 'next/image';
+const Footer = dynamic(() => import('../components/Footer/footer2'), { ssr: false });
+
 
 export default function SchmoozePage() {
 
@@ -51,6 +53,7 @@ export default function SchmoozePage() {
     const listItemStyle = { marginBottom: '0.5em' };
 
     return (
+    <div>
         <div className={stylesw.container}>
             <HeaderP
                 BGColor={"#ffffff"}
@@ -173,6 +176,8 @@ export default function SchmoozePage() {
                     description={<span>By understanding user behaviors and perceptions through research, key pain points like mindless swiping, unclear app intent, and interaction difficulties were identified. The proposed design solutions—introducing distinct tabs, offering tailored profile discovery, and refining the UI's visual language—aim to create a more intentional, effective, and satisfying dating experience on Schmooze.</span>}
                  />
             </section>
+        </div>
+        <Footer /> 
         </div>
     );
 }

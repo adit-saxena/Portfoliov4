@@ -2,7 +2,7 @@
 import styles from '../page.module.css';
 import { motion } from 'framer-motion';
 import TextType from './TextType/TextType.jsx';
-import Card from './Card/Card.jsx';
+import Card from './HeroCard/Card.jsx';
 
 const containerVariants = {
   hidden: { opacity: 1 },

@@ -2,12 +2,14 @@
 "use client";
 import { useState } from 'react'; // Import useState
 import HeaderP from '../components/headerProjects';
-import stylesw from './watchlist.module.css';
+import stylesw from './internal.module.css';
 import Workrow from './workrow';
+import dynamic from 'next/dynamic';
 // import SolutionBlock from '../components/SolutionBlock'; // Not used in the provided snippet
 
 // Import the Next.js Image component if you plan to use it for optimization
 // import Image from 'next/image';
+const Footer = dynamic(() => import('../components/Footer/footer2'), { ssr: false });
 
 export default function MyProject() {
     // --- State for Image Overlay ---
@@ -99,6 +101,7 @@ export default function MyProject() {
 
 
     return (
+        <div>
         <div className={stylesw.container}>
             <HeaderP
                 BGColor={"#ffffff"}
@@ -295,9 +298,6 @@ export default function MyProject() {
                     }
                 />
 
-                {/* SECONDARY PROJECTS & KEY INITIATIVES */}
-                <hr />
-
             </section>
 
             {/* Image Overlay */}
@@ -311,6 +311,10 @@ export default function MyProject() {
                     />
                 </div>
             )}
+            
+        </div>
+        
+           <Footer /> 
         </div>
     );
 }

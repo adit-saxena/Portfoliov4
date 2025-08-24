@@ -36,7 +36,7 @@
   gap: 0.4rem;         /* Space between icon and text */
   text-decoration: none; /* Optional: Remove underline if it's an anchor */
   color: black;       /* Optional: Inherit color from parent */
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
 
   /* Add any other styling like font-size, color, etc. */

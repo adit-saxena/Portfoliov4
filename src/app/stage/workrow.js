@@ -1,4 +1,4 @@
-import stylesw from './watchlist.module.css';
+import stylesw from './internal.module.css';
 
 export default function Workrow({ serial, heading, description }) {
     return (
