@@ -17,12 +17,14 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
+   useEffect(() => {
     setIsLoading(false);
   }, [pathname]);
 
-  const handleLinkClick = () => {
-    setIsLoading(true); 
+  const handleLinkClick = (isExternal = false) => {
+    if (!isExternal) {
+      setIsLoading(true);
+    }
   };
 
   return (
