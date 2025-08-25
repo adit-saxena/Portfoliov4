@@ -80,7 +80,7 @@
   position: absolute;
   background: 
     radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 60%),
-    url('/background.png') center/cover no-repeat;
+    url('/background.webp') center/cover no-repeat;
   opacity: 0.02;
 }
 
@@ -114,25 +114,6 @@ z-index: 100;
 }
 
 
-.footer{
-  display: flex;
-  flex-direction: column;
-  margin-top: 16vh;
-  margin-bottom: 4vh;
-  width: 100%;
-  align-items: center;
-}
-
-.footer span{
-  color: red;
-  font-weight: 900;
-}
-
-.footer h2{
-font-size: 2rem;
-font-weight: 600;
-color: #fff;
-}
 
 .outerbox {
   display: flex;
@@ -150,24 +131,7 @@ color: #fff;
   gap: 1vw;
 }
 
-.experiences {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 100;
-}
 
-.heroproject {
-  display: flex;
-  justify-content: center; /* Center the images horizontally */
-  background-color: powderblue;
-}
-
-.heroimage {
-  max-width: 40vw; /* Ensure images scale well */
-  height: auto;
-  object-fit: contain; /* Prevent image distortion */
-}
 
 .leftcol{
   display: flex;
@@ -198,23 +162,6 @@ color: #fff;
   max-height: 80vh;
 }
 
-
-.heroText {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #1f1f1f;
-  transition: transform 1.5s ease-in-out, font-size 1.5s ease-in-out, top 1.5s ease-in-out;
-  position: relative;
-}
-
-.animate .heroText {
-  font-size: 1rem; /* Adjust to nav text size */
-  transform: translateY(-200vh); /* Move upward */
-  position: fixed;
-  top: 2vh; /* Align to the nav bar */
-  left: 4vw; /* Adjust to nav positioning */
-  color: #3d3d3d; /* Optional: Match nav text color */
-}
 
 .tag {
   font-size: 1rem;
@@ -264,24 +211,6 @@ color: #fff;
   max-width: 50%; /* Limit the width of the text section */
 }
 
-.projectTitle {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #3b3b3b;
-  margin-bottom: 1rem;
-}
-
-.projectSubtitle {
-  font-size: 1.2rem;
-  font-weight: normal;
-  color: #6b6b6b;
-  margin-bottom: 1.5rem;
-}
-
-.projectAuthor {
-  font-size: 1rem;
-  color: #7b7b7b;
-}
 
 .imageContainer {
   flex: 1;
@@ -295,20 +224,6 @@ color: #fff;
   height: auto;
 }
 
-.herotext{
-  margin:auto;
-  display: flex;
-  flex-direction: row;
-}
-
-.mydescriptionhero {
-  max-width: 50vw;
-  font-size: 2rem;
-  margin-top: 20vh;
-  text-align: center;
-  color:#3d3d3d;
-  text-align: center;
-}
 
 .leftmenu{
   margin-right: auto;
@@ -318,41 +233,19 @@ color: #fff;
   gap: 48px;
 }
 
-.mydescription span{
-  color: red;
-  font-weight: 600;
-}
-.mydescriptionhero span{
-  color: red;
-  font-weight: 600;
-}
-
 .nav a {
   margin-left: 1rem;
   text-decoration: none;
   color: white;
   font-size: 0.8rem;
 }
+
 .tabs {
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
   position: relative;
   transition: color 0.3s ease-in-out;
-}
-.activeTab {
-  font-weight: bold;
-  color: #3d3d3d; /* Highlight color for the active tab */
-}
-.activeTab::after {
-  content: '';
-  position: absolute;
-  left: 35%;
-  bottom: -4px;
-  width: 30%;
-  height: 4px;
-  background-color: green; /* Same as the text highlight color */
-  border-radius: 20%;
 }
 .rightmenu{
   display: flex;

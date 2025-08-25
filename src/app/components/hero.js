@@ -83,25 +83,25 @@ export default function Hero() {
           variants={itemVariants}>
               <Card
               bgColor="#D6E5BE"
-              image="'/dtu2.jpg'"
+              image="'/dtu2.webp'"
               text="studied Bachelor of Design at DTU for 4 years"
               rotation={12.44}
               />
               <Card
               bgColor="#FAE1A7"
-              image="'/exp.png'"
+              image="'/exp.webp'"
               text="designed for 1 Cr+  users across e-commerce & OTT"
               rotation={-3.89}
               />
               <Card
               bgColor="#FFCBE1"
-              image="'/comps.png'"
+              image="'/comps.webp'"
               text="got recognized at leading design competitions "
               rotation={7.24}
               />
               <Card
               bgColor="#DCCCEA"
-              image="'/dtu.png'"
+              image="'/dtu.webp'"
               text="discussed my work with design experts from IITs"
               rotation={-9.7}
               />
