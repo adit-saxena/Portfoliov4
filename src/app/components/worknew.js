@@ -20,14 +20,7 @@ export default function WorkNew({
 
   const content = (
     <div className={styles.outerbox} style={{ backgroundColor }}>
-      <div className={styles.leftcol}>
-        <div className={styles.tagrow}>
-          {Tag1 && <Tags Text={Tag1} />}
-          {Tag2 && <Tags Text={Tag2} />}
-          {Tag3 && <Tags Text={Tag3} />}
-        </div>
-        <h3>{Title}</h3>
-      </div>
+      
 
       <div className={styles.rightcol}>
         {isVideo ? (
@@ -47,6 +40,14 @@ export default function WorkNew({
             height={200}
           />
         )}
+      </div>
+      <div className={styles.leftcol}>
+        <div className={styles.tagrow}>
+          {Tag1 && <Tags Text={Tag1} />}
+          {Tag2 && <Tags Text={Tag2} />}
+          {Tag3 && <Tags Text={Tag3} />}
+        </div>
+        <h3>{Title}</h3>
       </div>
     </div>
   );

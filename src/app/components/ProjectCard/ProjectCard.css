@@ -1,32 +1,56 @@
-/* Basic styling for the card container */
+/* --- GRID CONTAINER (wrap your cards in .project-cards) --- */
+.project-cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr; /* Mobile-first: one column */
+}
+
+/* Horizontal cards always span full width */
+.project-card--horizontal {
+  grid-column: 1 / -1;
+}
+
+/* Desktop: 2-column grid for vertical cards */
+@media (min-width: 768px) {
+  .project-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-card--horizontal {
+    grid-column: 1 / -1; /* still full width */
+  }
+}
+
+/* === CARD STYLES (yours, slightly adjusted) === */
 .project-card {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  border-radius: 32px;
+  font-family: "Space Grotesk", sans-serif;
   overflow: hidden;
-  background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease-in-out;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  cursor: pointer;
 }
 
-/* Media wrapper for positioning metrics */
+/* Media wrapper */
 .project-card__media-wrapper {
   position: relative;
   width: 100%;
+  border-radius: 24px;
+  max-height: 60vh;
+  overflow: hidden;
 }
 
 .project-card__media {
   width: 100%;
   height: 100%;
+  object-fit: cover; /* ✅ cover + crop */
   display: block;
-  object-fit: cover;
 }
 
-/* Metrics pills positioned over the media */
+/* Metrics */
 .project-card__metrics {
   position: absolute;
   bottom: 12px;
@@ -39,21 +63,21 @@
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
   padding: 6px 12px;
-  border-radius: 20px;
+  border-radius: 12px;
   font-size: 13px;
   font-weight: 500;
   color: #333;
 }
 
-/* Content section styling */
+/* Content */
 .project-card__content {
-  padding: 16px;
+  margin-top: 16px;
 }
 
 .project-card__headline {
   font-size: 2rem;
   width: 70%;
-  font-weight: 600;
+  font-weight: 900;
   margin: 0 0 4px 0;
   color: #111;
 }
@@ -65,18 +89,18 @@
 }
 
 .project-card__cta {
-  text-decoration: none;
   font-weight: 600;
   color: #333;
   display: inline-block;
   transition: color 0.2s;
+  
 }
 
 .project-card__cta:hover {
   color: #000;
 }
 
-/* == Horizontal Layout Specifics == */
+/* Horizontal layout */
 .project-card--horizontal .project-card__content {
   display: flex;
   justify-content: space-between;
@@ -87,10 +111,11 @@
 .project-card--horizontal .project-card__cta {
   background-color: #111;
   color: #fff;
-  padding: 10px 16px;
-  border-radius: 12px;
+  padding: 16px 24px;
+  border-radius: 48px;
+  margin-bottom: auto;
   font-size: 14px;
-  white-space: nowrap; /* Prevents text wrap */
+  white-space: nowrap;
   transition: background-color 0.2s;
 }
 
@@ -99,9 +124,10 @@
   color: #fff;
 }
 
-/* == Vertical Layout Specifics == */
+/* Vertical layout */
 .project-card--vertical {
-  background-color: #fff; /* Vertical card has a white background */
+  background-color: #fff;
+  width: 100%; /* let grid handle width */
 }
 
 .project-card--vertical .project-card__content {
@@ -112,16 +138,21 @@
 }
 
 .project-card--vertical .project-card__headline {
-  font-size: 18px; /* Slightly smaller for vertical */
+  font-size: 2rem;
+  width: 100%;
 }
 
-/* The CTA is just a simple link in vertical mode */
 .project-card--vertical .project-card__cta {
   font-size: 15px;
   color: #555;
 }
 
-/* Hide the arrow in vertical mode */
+.project-card--vertical .project-card__cta:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 700;
+}
+
 .project-card--vertical .project-card__cta-arrow {
   display: none;
 }

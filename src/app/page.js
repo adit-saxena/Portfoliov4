@@ -27,6 +27,19 @@ export default function Home() {
     }
   };
 
+   const handleCtaClick = () => {
+    console.log('CTA clicked!');
+    // Custom logic here
+  };
+
+   const customMetrics = [
+    { label: "Engagement", value: "+5%", valueColor: "#10b981" },
+    { label: "Agile Methodology", value: "" },
+    { label: "User Satisfaction", value: "+12%", valueColor: "#3b82f6" },
+    { label: "Performance", value: "98%", valueColor: "#f59e0b" },
+    { label: "Accessibility", value: "AA+", valueColor: "#8b5cf6" }
+  ];
+
   return (
     <div className={styles.container}>
       {isLoading && <Loader />}
@@ -109,6 +122,56 @@ export default function Home() {
             isExternal={true}
           />
         </AnimatedCard>
+
+       {/* Horizontal Layout (Image) */}
+      <ProjectCard
+        headline="Crafted digital experiences that delight users - and businesses"
+        description="We helped redesign an e-commerce platform to improve conversions and user retention."
+        metrics={["+35% Conversions", "Agile Process", "5M+ Users"]}
+        layout="horizontal"
+        projectUrl="/stage"
+        ctaText="View Project"
+        horizontalMedia={{
+          src: "/StageWorksAnimations.webm",
+          type: "video",
+        }}
+        verticalMedia={{
+          src: "/StageWorksAnimations.webm",
+          type: "video",
+        }}
+      />
+
+      {/* Vertical Layout (Video) */}
+      <ProjectCard
+        headline="Healthcare Platform"
+        metrics={["+5% Engagement", "HIPAA Compliant"]}
+        layout="vertical"
+        projectUrl="https://example.com/healthcare"
+        ctaText="View Project"
+        horizontalMedia={{
+          src: "/dtu.webp",
+          type: "image",
+        }}
+        verticalMedia={{
+          src: "/StageWorksAnimations.webm",
+          type: "video",
+        }}
+      />
+      <ProjectCard
+        headline="Healthcare Platform"
+        metrics={["+5% Engagement", "HIPAA Compliant"]}
+        layout="vertical"
+        projectUrl="https://example.com/healthcare"
+        ctaText="View Project"
+        horizontalMedia={{
+          src: "/dtu.webp",
+          type: "image",
+        }}
+        verticalMedia={{
+          src: "/StageWorksAnimations.webm",
+          type: "video",
+        }}
+      />
 
         
       </section>

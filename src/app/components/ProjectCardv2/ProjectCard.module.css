@@ -1,0 +1,264 @@
+/* components/ProjectCard.css */
+.projectCard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.textContent {
+  z-index: 2;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 1.5rem 0;
+  color: #1a202c;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+}
+
+.projectImageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.projectMedia {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.projectMedia:hover {
+  transform: translateY(-8px);
+}
+
+/* Floating Metrics */
+.metricBadge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.metricBadge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.metricContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.metricValue {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #059669;
+  background: linear-gradient(90deg, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Metric positioning */
+.metric1 {
+  top: 15%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.metric2 {
+  bottom: 20%;
+  right: -15%;
+  animation-delay: 1s;
+}
+
+.metric3 {
+  top: 50%;
+  left: -20%;
+  animation-delay: 2s;
+}
+
+.metric4 {
+  top: 10%;
+  right: -10%;
+  animation-delay: 0.5s;
+}
+
+.metric5 {
+  bottom: 10%;
+  left: -15%;
+  animation-delay: 1.5s;
+}
+
+/* CTA Button */
+.ctaButton {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #1a202c;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background: #2d3748;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3);
+}
+
+.ctaArrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+  
+  .content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .metricBadge {
+    position: relative;
+    margin: 0.5rem;
+    display: inline-block;
+  }
+  
+  .metric1,
+  .metric2,
+  .metric3,
+  .metric4,
+  .metric5 {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+  
+  .projectImageContainer {
+    order: -1;
+  }
+  
+  .ctaButton {
+    align-self: center;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .metricBadge {
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+  }
+  
+  .metricContent {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .metricValue,
+  .metricLabel {
+    font-size: 0.75rem;
+  }
+}
