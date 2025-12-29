@@ -107,7 +107,7 @@ export default function Home() {
             Tag1="Internship"
             Tag2="Stakeholders Collab"
             Tag3="Research"
-            ProjectName="Nurture.farm"
+            ProjectName="Nurture.Farm"
             OneLiner="Improving field sales efficiency"
             Description="Streamlined the sales process for on-field teams by redesigning the data collection and reporting tools."
             Url="/nurturecover2min.png"
