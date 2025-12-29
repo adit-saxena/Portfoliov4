@@ -11,7 +11,7 @@
   background-size: 20px 20px;
   background: #ffffff;
   cursor: url('/cursor.png'), auto;
-  
+
 }
 
 .header {
@@ -19,39 +19,57 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2vh 4vw; /* Ensure padding matches the container */
-  position: fixed; /* Keeps the header on top */
-  top: 0; /* Ensure it starts from the top */
+  padding: 2vh 4vw;
+  /* Ensure padding matches the container */
+  position: fixed;
+  /* Keeps the header on top */
+  top: 0;
+  /* Ensure it starts from the top */
   left: 0;
-  width: 100%; /* Full width of the viewport */
-  z-index: 1000; /* Ensures it's above all other elements */
-  background: rgba(255, 255, 255, 0); /* Transparent white */
-  backdrop-filter: blur(10px); /* Blurry effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  width: 100%;
+  /* Full width of the viewport */
+  z-index: 1000;
+  /* Ensures it's above all other elements */
+  background: rgba(255, 255, 255, 0);
+  /* Transparent white */
+  backdrop-filter: blur(10px);
+  /* Blurry effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
 }
 
 .backLink {
-  display: inline-flex; /* Use flex to align icon and text */
-  align-items: center;  /* Vertically center icon and text */
-  gap: 0.4rem;         /* Space between icon and text */
-  text-decoration: none; /* Optional: Remove underline if it's an anchor */
-  color: black;       /* Optional: Inherit color from parent */
+  display: inline-flex;
+  /* Use flex to align icon and text */
+  align-items: center;
+  /* Vertically center icon and text */
+  gap: 0.4rem;
+  /* Space between icon and text */
+  text-decoration: none;
+  /* Optional: Remove underline if it's an anchor */
+  color: black;
+  /* Optional: Inherit color from parent */
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
 
   /* Add any other styling like font-size, color, etc. */
 }
 
-.backLink svg { /* Style the icon itself if needed */
-  width: 1.2em; /* Example size */
-  height: 1.2em; /* Example size */
+.backLink svg {
+  /* Style the icon itself if needed */
+  width: 1.2em;
+  /* Example size */
+  height: 1.2em;
+  /* Example size */
 }
 
 .resumeButton {
   /* Your styles for the resume button */
   padding: 0.5rem 1rem;
-  border: 1px solid #ccc; /* Example */
-  border-radius: 4px; /* Example */
+  border: 1px solid #ccc;
+  /* Example */
+  border-radius: 4px;
+  /* Example */
   text-decoration: none;
   color: inherit;
 }
@@ -64,7 +82,7 @@
 
 }
 
-.hero{
+.hero {
   display: flex;
   flex-direction: column;
   margin-top: 10vh;
@@ -74,101 +92,156 @@
   gap: 3vh;
   z-index: 100;
 }
+
 .aurora-container {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: 
+  background:
     radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 60%),
     url('/background.webp') center/cover no-repeat;
   opacity: 0.02;
 }
 
 
-.hero h2{
-font-size: 4rem;
-font-family: "Plus Jakarta Sans", sans-serif;
-font-weight: 900;
-color: #000;
-z-index: 100;
+.hero h2 {
+  font-size: 4rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 900;
+  color: #000;
+  z-index: 100;
 }
 
-.whennot{
+.whennot {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.whennotside{
-font-size: 1.6rem;
-font-weight: 600;
-color: #9E9E9E;
-z-index: 100;
+.whennotside {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #9E9E9E;
+  z-index: 100;
 }
 
-.whennotmain{
-font-size: 1.6rem;
-font-weight: 400;
-color: #3e3e3e;
-z-index: 100;
+.whennotmain {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #3e3e3e;
+  z-index: 100;
 }
 
-
-
+/* Updated Card Styles */
 .outerbox {
   display: flex;
-  flex-direction: row;
-  border-radius: 0.4rem;
-  overflow: hidden;
-  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.2);
-  height: 80vh;
+  flex-direction: column;
+  height: auto;
+  background: transparent;
+  box-shadow: none;
+  margin-bottom: 24px;
+  /* Ensure spacing between cards */
 }
 
-.tagrow{
+.visualContainer {
+  width: 100%;
+  height: 60vh;
+  /* Adjust as needed */
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  /* Add shadow/border to visual container if desired, or keep it clean */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.visualContainer img,
+.visualContainer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 16px;
+  width: 100%;
+  gap: 64px;
+  /* Fixed gap from project name */
+}
+
+.projectName {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* Prevent title from shrinking */
+  /* Color will be passed via inline style */
+}
+
+.projectDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Left align content */
+  max-width: 100%;
+  /* Allow full width */
+  flex: 1;
+  gap: 8px;
+}
+
+.oneLiner {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: left;
+  /* Left align */
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: left;
+  /* Left align */
+  line-height: 1.4;
+  color: #666;
+  margin-bottom: 12px;
+  max-width: 100%;
+  /* Let it fill the container */
+}
+
+.tagrow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1vw;
+  gap: 8px;
+  justify-content: flex-start;
+  /* Left align tags */
 }
 
-
-
-.leftcol{
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  padding-left: 4vw;
-  padding-top: 4vw;
-  padding-bottom: 4vw;
+.leftcol {
+  display: none;
 }
 
-.leftcol h3{
-  color: aliceblue;
-  font-size: 2.4rem;
-  margin-top: auto;
+.rightcol {
+  display: none;
 }
 
-.rightcol{
-  display: flex;
-  width: 50%;
-  justify-content: flex-end; /* Push image to the right */
-  margin-left: auto;
-}
-
-.rightcol img{
-  object-fit:cover;
-  height: auto;
-  width: 100%; /* Ensures the image fills the right column */
-  max-height: 80vh;
-}
+/* End Updated Card Styles */
 
 
 .tag {
-  font-size: 1rem;
-  padding: 8px 16px;
+  font-size: 0.9rem;
+  padding: 6px 16px;
   border-radius: 48px;
-  background-color:rgba(255, 255, 255, 0.1);
-  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* Light border instead of background */
+  color: #666;
   font-weight: 400;
 }
 
@@ -177,7 +250,7 @@ z-index: 100;
   color: #000;
 }
 
-.heroproject{
+.heroproject {
   display: flex;
   flex-direction: row;
   background-color: powderblue;
@@ -188,19 +261,25 @@ z-index: 100;
   max-width: 35vw;
   color: #3d3d3d;
   text-align: center;
-  display: none;  /* Initially hidden */
-  opacity: 0;  /* Add opacity to handle smooth transition */
-  transition: opacity 0.3s ease-in-out; /* Smooth transition for showing */
+  display: none;
+  /* Initially hidden */
+  opacity: 0;
+  /* Add opacity to handle smooth transition */
+  transition: opacity 0.3s ease-in-out;
+  /* Smooth transition for showing */
 }
 
 .mydescription.show {
-  display: block;  /* Show the description after scrolling */
-  opacity: 1;  /* Make it fully visible */
+  display: block;
+  /* Show the description after scrolling */
+  opacity: 1;
+  /* Make it fully visible */
 }
 
 .projectContainer {
   display: flex;
-  flex-direction: row; /* Align text and image horizontally */
+  flex-direction: row;
+  /* Align text and image horizontally */
   justify-content: space-between;
   margin: 3rem 5vw;
 }
@@ -208,7 +287,8 @@ z-index: 100;
 .textContainer {
   flex: 1;
   padding: 1rem;
-  max-width: 50%; /* Limit the width of the text section */
+  max-width: 50%;
+  /* Limit the width of the text section */
 }
 
 
@@ -219,13 +299,14 @@ z-index: 100;
 }
 
 .imageContainer img {
-  border-radius: 12px; /* Optional: rounded corners for the image */
+  border-radius: 12px;
+  /* Optional: rounded corners for the image */
   max-width: 100%;
   height: auto;
 }
 
 
-.leftmenu{
+.leftmenu {
   margin-right: auto;
   display: flex;
   flex-direction: row;
@@ -247,13 +328,15 @@ z-index: 100;
   position: relative;
   transition: color 0.3s ease-in-out;
 }
-.rightmenu{
+
+.rightmenu {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 2vw;
 }
+
 .resumeButton {
   display: flex;
   transition: ease-in-out 0.2s;
@@ -265,6 +348,7 @@ z-index: 100;
   align-items: center;
   font-family: "Space Grotesk", sans-serif;
 }
+
 .cuttochase {
   display: flex;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -280,7 +364,8 @@ z-index: 100;
 }
 
 .cuttochase:hover {
-  transform: scale(1.05); /* grow smoothly */
+  transform: scale(1.05);
+  /* grow smoothly */
   color: #fff;
   background-color: rgba(0, 0, 0, 1);
 }
@@ -300,14 +385,17 @@ z-index: 100;
   align-items: center;
   font-family: "Space Grotesk", sans-serif;
 }
+
 .resumeButton:hover {
- background-color: rgba(0, 0, 0, 1);
- color: #fff;
- border: #000 solid 1px;
+  background-color: rgba(0, 0, 0, 1);
+  color: #fff;
+  border: #000 solid 1px;
 }
+
 .resumeButton2:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 .intro {
   width: 70vw;
   margin-right: auto;
@@ -315,15 +403,18 @@ z-index: 100;
   position: relative;
   height: 50vh;
 }
-.intro p{
+
+.intro p {
   font-weight: 500;
 }
-.heroimage{
+
+.heroimage {
   aspect-ratio: fixed;
   max-width: 40vw;
   margin-right: auto;
-  
+
 }
+
 .intro h1 {
   font-size: 2.4rem;
   line-height: 1.4;
@@ -331,14 +422,18 @@ z-index: 100;
   font-weight: 600;
   text-align: left;
 }
+
 .intro em {
   font-style: italic;
-  color: #ff4500; /* Adjust branding color */
+  color: #ff4500;
+  /* Adjust branding color */
 }
+
 .intro .highlight {
   color: red;
   font-weight: bold;
 }
+
 .logos {
   display: flex;
   justify-content: space-around;
@@ -346,6 +441,7 @@ z-index: 100;
   gap: 1rem;
   position: relative;
 }
+
 .work {
   display: flex;
   width: 70vw;
@@ -356,59 +452,76 @@ z-index: 100;
 /* New Styles for the Animated Background */
 
 @media screen and (max-width: 500px) {
-  .outerbox{
-    flex-direction: column-reverse;
-    padding:12px;
+  .outerbox {
+    flex-direction: column;
+    padding: 12px;
   }
 
-  .cardrow{
+  .visualContainer {
+    height: 40vh;
+  }
+
+  .infoContainer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .projectDetails {
+    align-items: flex-start;
+    max-width: 100%;
+    margin-top: 12px;
+  }
+
+  .description {
+    text-align: left;
+  }
+
+  .tagrow {
+    justify-content: flex-start;
+  }
+
+  .cardrow {
     display: none;
   }
-  
-  .whennot{
+
+  .whennot {
     flex-direction: column;
     gap: 4px;
     margin-top: 2vh;
   }
 
 
-  .tagline{
+  .tagline {
     display: none;
   }
 
-  .tagrow{
-    flex-direction: row;
-    width: 100%;
-    margin-bottom: 4vh;
-    margin-top: 2vh;
-  }
-
-  .leftcol{
+  .leftcol {
     width: 100%;
     margin-bottom: 2vh;
   }
-  .rightcol{
+
+  .rightcol {
     width: 100%;
   }
 
-  .hero{
+  .hero {
     width: 100vw;
   }
 
-  .work{
+  .work {
     width: 90vw;
     gap: 6vh;
   }
 
-  .work h3{
+  .work h3 {
     font-size: 2rem;
   }
 
-  .footer{
+  .footer {
     margin-top: 8vh;
   }
 
-  .container{
+  .container {
     background-color: #fff;
   }
 }

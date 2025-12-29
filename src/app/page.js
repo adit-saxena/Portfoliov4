@@ -17,7 +17,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
 
-   useEffect(() => {
+  useEffect(() => {
     setIsLoading(false);
   }, [pathname]);
 
@@ -30,9 +30,9 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {isLoading && <Loader />}
-      
+
       <motion.div className={styles["aurora-container"]} initial={{ opacity: 0 }}
-      animate={{ opacity: 0.02}} transition={{ duration: 0.4 }}>
+        animate={{ opacity: 0.02 }} transition={{ duration: 0.4 }}>
       </motion.div>
 
       <Header />
@@ -60,21 +60,25 @@ export default function Home() {
             Tag1="Internship"
             Tag2="Wireframing"
             Tag3="Primary Research"
-            Title="Helping find content people love @ Stage OTT"
+            ProjectName="Stage OTT"
+            OneLiner="Helping find content people love"
+            Description="Designed the content discovery flow for a vernacular OTT platform, improving user engagement through personalized recommendations."
             Url="/StageWorksAnimations.webm"
             PageUrl="/stage"
             backgroundColor="#420e0eff"
             onClick={handleLinkClick} // Pass the click handler
           />
         </motion.div>
-        
+
 
         <AnimatedCard delay={0}>
           <WorkNew
             Tag1="In-Depth Interviews"
             Tag2="Wireframing"
             Tag3="UI Design"
-            Title="Matchmaking done right - evaluating how Schmooze could do it better"
+            ProjectName="Schmooze"
+            OneLiner="Matchmaking done right"
+            Description="Evaluated and redesigned key user flows to enhance the matchmaking experience, focusing on genuine connections over swiping."
             Url="/SchmoozeThumbnailMin.png"
             PageUrl="/schmooze"
             backgroundColor="#07008C"
@@ -87,7 +91,9 @@ export default function Home() {
             Tag1="Survey Design"
             Tag2="Wireframing"
             Tag3="Concept Testing"
-            Title="Making gaming a bit more relaxing - and a lot less toxic"
+            ProjectName="Valorant"
+            OneLiner="Making gaming less toxic"
+            Description="Conceptualized features to reduce toxicity in competitive gaming, creating a more inclusive and relaxing environment for players."
             Url="/valorantcovermin.png"
             PageUrl="https://drive.google.com/file/d/1McBTaejw2VjvLo55hTbPdVNZnL8hfAUS/view"
             backgroundColor="#B22A00"
@@ -101,16 +107,18 @@ export default function Home() {
             Tag1="Internship"
             Tag2="Stakeholders Collab"
             Tag3="Research"
-            Title="Building to improve efficiency of our on-field sales team"
+            ProjectName="Nurture.farm"
+            OneLiner="Improving field sales efficiency"
+            Description="Streamlined the sales process for on-field teams by redesigning the data collection and reporting tools."
             Url="/nurturecover2min.png"
             PageUrl="https://drive.google.com/file/d/1hibXJyl-nEYUOsyLJK21vgVIH_F57JVx/view"
             backgroundColor="#200054"
             onClick={handleLinkClick}
             isExternal={true}
           />
-        </AnimatedCard>
+        </AnimatedCard>
 
-        
+
       </section>
 
       <Footer />

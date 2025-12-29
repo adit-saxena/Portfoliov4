@@ -9,12 +9,15 @@ export default function AnimatedCard({ children, delay = 0 }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 0 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: 0.4
+        duration: 0.6,
+        ease: "easeOut"
       }}
-      whileHover={{ scale: 0.98, opacity: 0.9 }}
+      whileHover={{
+        y: -10,
+      }}
     >
       {children}
     </motion.div>

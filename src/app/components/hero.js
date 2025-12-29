@@ -63,10 +63,10 @@ export default function Hero() {
           >
             <span className={styles.whennotside}>If it</span>
             <span className={styles.whennotmain}>
-              <TextType 
+              <TextType
                 text={[
-                  "isn't as intuitive as drinking water", 
-                  "feels like solving a riddle every time", 
+                  "isn't as intuitive as drinking water",
+                  "feels like solving a riddle every time",
                   "makes users think harder"
                 ]}
                 typingSpeed={60}
@@ -81,38 +81,38 @@ export default function Hero() {
         <motion.div
           className={styles.cardrow}
           variants={itemVariants}>
-              <Card
-              bgColor="#D6E5BE"
-              image="'/dtu2.webp'"
-              text="studied Bachelor of Design at DTU for 4 years"
-              rotation={12.44}
-              />
-              <Card
-              bgColor="#FAE1A7"
-              image="'/exp.webp'"
-              text="designed for 1 Cr+  users across e-commerce & OTT"
-              rotation={-3.89}
-              />
-              <Card
-              bgColor="#FFCBE1"
-              image="'/comps.webp'"
-              text="got recognized at leading design competitions "
-              rotation={7.24}
-              />
-              <Card
-              bgColor="#DCCCEA"
-              image="'/dtu.webp'"
-              text="discussed my work with design experts from IITs"
-              rotation={-9.7}
-              />
+          <Card
+            bgColor="#D6E5BE"
+            image="'/dtu2.webp'"
+            text="studied Bachelor of Design at DTU for 4 years"
+            rotation={12.44}
+          />
+          <Card
+            bgColor="#FAE1A7"
+            image="'/exp.webp'"
+            text="designed for 1 Cr+  users across fintech, e-commerce & OTT"
+            rotation={-3.89}
+          />
+          <Card
+            bgColor="#FFCBE1"
+            image="'/comps.webp'"
+            text="got recognized at leading design competitions "
+            rotation={7.24}
+          />
+          <Card
+            bgColor="#DCCCEA"
+            image="'/dtu.webp'"
+            text="discussed my work with design experts from IITs"
+            rotation={-9.7}
+          />
 
-          </motion.div>
-          <motion.p
-            variants={itemVariants}
-            className={styles.tagline}
-          >
-            only to end up...
-            </motion.p>
+        </motion.div>
+        <motion.p
+          variants={itemVariants}
+          className={styles.tagline}
+        >
+          only to end up...
+        </motion.p>
       </motion.div>
     </div>
   );
