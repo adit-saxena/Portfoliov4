@@ -10,7 +10,7 @@ export default function Card({
   return (
     <motion.div
       className="card"
-      
+
       // 'animate' defines the component's default, non-hovered state.
       animate={{
         rotate: rotation,
@@ -27,9 +27,9 @@ export default function Card({
         rotate: 0,
         zIndex: 100
       }}
-      
+
       // A single transition prop controls the animation's timing and feel.
-      transition={{ duration: 0.2, ease: "easeInOut" }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
 
       // The conflicting 'transform' property has been removed from the style prop.
       style={{

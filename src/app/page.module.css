@@ -449,6 +449,10 @@
   gap: 10vh;
 }
 
+.tagline {
+  color: #000;
+}
+
 /* New Styles for the Animated Background */
 
 @media screen and (max-width: 500px) {
@@ -523,5 +527,70 @@
 
   .container {
     background-color: #fff;
+  }
+}
+
+/* Secondary Section Styles */
+/* Secondary Section Styles */
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 2vh;
+  /* Center content like subHeading and grid */
+}
+
+.subHeading {
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+
+  margin-top: 2vh;
+  /* Reset top margin, relying on parent gap */
+  margin-bottom: 3vh;
+  /* Reduced gap to content */
+  text-align: left;
+}
+
+.subHeading::before {
+  content: "✦";
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 2px;
+  background: linear-gradient(135deg, #9b5cf6, #ec4899);
+  /* Violet to Pink WebP gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.subHeading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, #e0e0e0, transparent);
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+/* Secondary Grid Layout Only */
+.secondaryGrid {
+  display: grid;
+  width: 70vw;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4vw;
+  margin-bottom: 6vh;
+}
+
+@media screen and (max-width: 900px) {
+  .secondaryGrid {
+    grid-template-columns: 1fr;
   }
 }

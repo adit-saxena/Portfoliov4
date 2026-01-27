@@ -49,7 +49,7 @@ export default function Hero() {
 
         {/* 2. Heading */}
         <motion.h2 variants={itemVariants}>
-          i hate design.
+          i hate design
         </motion.h2>
 
         {/* 3. Paragraph */}
@@ -61,7 +61,7 @@ export default function Hero() {
             variants={itemVariants}
             className={styles.whennot}
           >
-            <span className={styles.whennotside}>If it</span>
+            <span className={styles.whennotside}>if it</span>
             <span className={styles.whennotmain}>
               <TextType
                 text={[

@@ -8,7 +8,7 @@
   padding: 16px;
   box-sizing: border-box;
   /* 👇 REMOVED 'transform' from the transition */
-  transition: box-shadow 0.25s ease;
+  /* transition: box-shadow 0.25s ease; REMOVED to let Framer Motion handle it */
   position: relative;
 }
 

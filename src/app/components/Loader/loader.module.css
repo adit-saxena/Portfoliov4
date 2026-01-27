@@ -4,71 +4,125 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(30,30,30,0.8) 0%, rgba(10,10,10,0.9) 100%);
+  background: #000;
+  /* Solid Black for high contrast wireframe feel */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  backdrop-filter: blur(6px);
-  animation: fadeIn 0.4s ease-in-out;
 }
 
-.spinner {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #00e0ff, #0077ff, #00e0ff);
-  animation: spin 0.9s linear infinite, bounce 1.2s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+.wireframeContainer {
+  width: 140px;
+  height: 180px;
+  border: 2px solid #333;
+  /* Dark grey base */
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  box-sizing: border-box;
+  animation: borderFlash 2s infinite;
+}
+
+.wireframeHeader {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal cross for image placeholder wireframe */
+.wireframeHeader::before,
+.wireframeHeader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #333;
+  transform-origin: center;
+}
+
+.wireframeHeader::before {
+  transform: rotate(32deg) scale(1.5);
+}
+
+.wireframeHeader::after {
+  transform: rotate(-32deg) scale(1.5);
+}
+
+.wireframeBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line {
+  height: 8px;
+  background: #333;
+  border-radius: 2px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.line:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.line:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
 .text {
-  margin-top: 20px;
-  font-size: 1.3em;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: white;
-
-  
+  margin-top: 32px;
+  font-family: "Space Grotesk", sans-serif;
+  /* Techy font */
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: blink 1s infinite alternate;
 }
 
 /* Animations */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+@keyframes borderFlash {
+
+  0%,
   100% {
-    transform: rotate(360deg);
+    border-color: #333;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
   }
-}
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
   50% {
-    transform: translateY(-10px);
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(1.05);
+@keyframes pulse {
+
+  0%,
+  100% {
+    background: #333;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+
+  50% {
+    background: #fff;
   }
 }
 
-@keyframes fadeInText {
+@keyframes blink {
   from {
-    opacity: 0;
-    transform: translateY(10px);
+    opacity: 0.4;
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }

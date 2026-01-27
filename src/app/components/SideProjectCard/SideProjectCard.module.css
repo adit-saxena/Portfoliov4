@@ -1,0 +1,69 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.2s ease-in-out;
+}
+
+.linkWrapper {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.linkWrapper:focus {
+    outline: 2px solid #000;
+    outline-offset: 4px;
+}
+
+
+.card:hover .visualContainer {
+    transform: scale(0.98);
+}
+
+.visualContainer {
+    width: 100%;
+    height: 35vh;
+    /* Match the previous look */
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+    background-color: #eee;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+    white-space: normal;
+}
+
+.description {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 900px) {
+    .visualContainer {
+        height: 40vh;
+    }
+}
