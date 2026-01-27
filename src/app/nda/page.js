@@ -20,7 +20,7 @@ export default function NDAPage() {
                 <div className={styles.contentWrapper}>
                     <div className={styles.illustration}>
                         <Image
-                            src="/NDA.png"
+                            src="/NDA.webp"
                             alt="NDA Locked Content"
                             fill
                             style={{ objectFit: 'contain' }}

@@ -27,7 +27,7 @@ const mainProjects = [
     ProjectName: "KredX",
     OneLiner: "Boosting factoring unit discovery for financiers",
     Description: "Redesigned the core financier dashboard to improve unit visibility, reducing discovery time by 40% and increasing platform liquidity.",
-    Url: "/KredXCover.png", // Reuse valid existing image as placeholder
+    Url: "/KredXCover.webp", // Reuse valid existing image as placeholder
     PageUrl: "/nda", // Updated KredX URL
     backgroundColor: "#003E7E",
     isExternal: false
@@ -67,7 +67,7 @@ const sideProjects = [
     id: 4, // Added id
     ProjectName: "SplitX",
     Description: "Building a smart automated A/B Testing engine for all website owners",
-    Url: "/SplitXCover.png",
+    Url: "/SplitXCover.webp",
     PageUrl: "https://app.splitx.live/signin",
     backgroundColor: "#F0F0F0",
     isExternal: true, // Mark as external link
@@ -79,7 +79,7 @@ const sideProjects = [
     id: 5, // Added id
     ProjectName: "PDF Builder",
     Description: "Building a tool that helps create and prefill custom old school forms - the new way",
-    Url: "/FormBuilder.png",
+    Url: "/FormBuilder.webp",
     PageUrl: "#construction", // Updated PDF Builder URL
     backgroundColor: "#ECECEC",
     Tag1: null, // Added null tags for consistency
@@ -96,7 +96,7 @@ const ancientProjects = [
     ProjectName: "Nurture.Farm",
     OneLiner: "Improving field sales efficiency",
     Description: "Streamlined the sales process for on-field teams by redesigning the data collection and reporting tools.",
-    Url: "/nurture-logo.png",
+    Url: "/nurture-logo.webp",
     PageUrl: "https://drive.google.com/file/d/1hibXJyl-nEYUOsyLJK21vgVIH_F57JVx/view",
     backgroundColor: "#200054",
     isExternal: true
@@ -108,7 +108,7 @@ const ancientProjects = [
     ProjectName: "Valorant",
     OneLiner: "Making gaming less toxic",
     Description: "Conceptualized features to reduce toxicity in competitive gaming, creating a more inclusive and relaxing environment for players.",
-    Url: "/valorant-logo.png",
+    Url: "/valorant-logo.webp",
     PageUrl: "https://drive.google.com/file/d/1McBTaejw2VjvLo55hTbPdVNZnL8hfAUS/view",
     backgroundColor: "#B22A00",
     isExternal: true
