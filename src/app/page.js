@@ -80,7 +80,7 @@ const sideProjects = [
     ProjectName: "PDF Builder",
     Description: "Building a tool that helps create and prefill custom old school forms - the new way",
     Url: "/FormBuilder.webp",
-    PageUrl: "#construction", // Updated PDF Builder URL
+    PageUrl: "https://pdfformbuilder.vercel.app/login", // Updated PDF Builder URL
     backgroundColor: "#ECECEC",
     Tag1: null, // Added null tags for consistency
     Tag2: null,
