@@ -82,6 +82,7 @@ const sideProjects = [
     Url: "/FormBuilder.webp",
     PageUrl: "https://pdfformbuilder.vercel.app/login", // Updated PDF Builder URL
     backgroundColor: "#ECECEC",
+    isExternal: true,
     Tag1: null, // Added null tags for consistency
     Tag2: null,
     OneLiner: null
