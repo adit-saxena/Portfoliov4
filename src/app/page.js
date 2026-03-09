@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Header from './components/header';
 import { motion, AnimatePresence } from 'framer-motion'; // Combined motion and added AnimatePresence
 import Hero from './components/hero';
@@ -17,6 +17,7 @@ const WorkNew = dynamic(() => import('./components/worknew'), { loading: () => <
 const SideProjectCard = dynamic(() => import('./components/SideProjectCard/SideProjectCard'), { loading: () => <p>Loading Side Project...</p> }); // Redefined with loading
 const ArchiveList = dynamic(() => import('./components/ArchiveList/ArchiveList'), { loading: () => <p>Loading Archive...</p> }); // Redefined with loading
 const ConstructionModal = dynamic(() => import('./components/ConstructionModal/ConstructionModal'), { ssr: false }); // Added ConstructionModal import
+const NDAPasswordModal = dynamic(() => import('./components/NDAPasswordModal/NDAPasswordModal'), { ssr: false });
 
 const mainProjects = [
   {
@@ -119,22 +120,38 @@ const ancientProjects = [
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isConstructionModalOpen, setIsConstructionModalOpen] = useState(false); // Added state for Construction Modal
+  const [isNDAModalOpen, setIsNDAModalOpen] = useState(false);
+  const [ndaTargetUrl, setNdaTargetUrl] = useState('');
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setIsLoading(false);
   }, [pathname]);
 
-  const handleProjectClick = (e, url, isExternal = false) => { // Modified handleProjectClick to accept isExternal
+  const handleProjectClick = (e, url, isExternal = false, projectName = "") => {
     if (url === '#construction') {
       e.preventDefault();
       setIsConstructionModalOpen(true);
-    } else {
-      // Original handleLinkClick logic
-      if (!isExternal) {
-        setIsLoading(true);
-      }
+      return;
     }
+    if (projectName === "KredX") {
+      e.preventDefault();
+      setNdaTargetUrl(url);
+      setIsNDAModalOpen(true);
+      return;
+    }
+
+    // Original handleLinkClick logic
+    if (!isExternal) {
+      setIsLoading(true);
+    }
+  };
+
+  const handleNDASuccess = () => {
+    setIsNDAModalOpen(false);
+    setIsLoading(true);
+    router.push(ndaTargetUrl);
   };
 
   return (
@@ -152,6 +169,7 @@ export default function Home() {
         {mainProjects.map((project, index) => (
           <AnimatedCard key={project.ProjectName} delay={index * 0.1}>
             <motion.div
+              id={`project-${project.ProjectName.replace(/\s+/g, '-')}`}
               initial={index === 0 ? { opacity: 0, y: 200, scale: 1 } : {}}
               animate={index === 0 ? {
                 opacity: 1,
@@ -170,7 +188,7 @@ export default function Home() {
             >
               <WorkNew
                 {...project}
-                onClick={(e) => handleProjectClick(e, project.PageUrl, project.isExternal)} // Updated onClick
+                onClick={(e) => handleProjectClick(e, project.PageUrl, project.isExternal, project.ProjectName)} // Updated onClick
               />
             </motion.div>
           </AnimatedCard>
@@ -185,7 +203,7 @@ export default function Home() {
               <SideProjectCard
                 key={project.ProjectName} // Changed key to ProjectName for consistency
                 {...project}
-                onClick={(e) => handleProjectClick(e, project.PageUrl, project.isExternal)} // Updated onClick
+                onClick={(e) => handleProjectClick(e, project.PageUrl, project.isExternal, project.ProjectName)} // Updated onClick
               />
             ))}
           </div>
@@ -206,6 +224,22 @@ export default function Home() {
       <ConstructionModal
         isOpen={isConstructionModalOpen}
         onClose={() => setIsConstructionModalOpen(false)}
+      />
+
+      <NDAPasswordModal
+        isOpen={isNDAModalOpen}
+        onClose={() => setIsNDAModalOpen(false)}
+        onSuccess={handleNDASuccess}
+        onSecondaryAction={() => {
+          setIsNDAModalOpen(false);
+          // Wait for modal exit animation before scrolling
+          setTimeout(() => {
+            const element = document.getElementById('project-Stage-OTT');
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }, 300);
+        }}
       />
     </div>
   );
