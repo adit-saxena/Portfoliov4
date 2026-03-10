@@ -7,6 +7,19 @@ export default function Card({
   text,
   rotation = 0,
 }) {
+  // Calculate x-offset based on rotation (so the shadow falls consistently straight down relative to the viewport)
+  // Assuming the light source is directly above. If card is rotated left (negative), shadow goes slightly right (positive X).
+  const angleInRadians = rotation * (Math.PI / 180);
+  const depth = 8;
+  const hoverDepth = 14;
+
+  // Calculate relative X/Y offsets so the shadow always falls straight down
+  const xOffset = -Math.sin(angleInRadians) * depth;
+  const yOffset = Math.cos(angleInRadians) * depth;
+
+  const hoverXOffset = -Math.sin(angleInRadians) * hoverDepth;
+  const hoverYOffset = Math.cos(angleInRadians) * hoverDepth;
+
   return (
     <motion.div
       className="card"
@@ -15,14 +28,14 @@ export default function Card({
       animate={{
         rotate: rotation,
         zIndex: 0,
-        boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.15)",
+        boxShadow: `${xOffset}px ${yOffset}px 0px rgba(0, 0, 0, 0.12), ${xOffset}px ${yOffset + 2}px 20px rgba(0, 0, 0, 0.08)`,
       }}
 
       // 'whileHover' defines the state to animate to during a hover.
       whileHover={{
         y: -6,
         scale: 1.03,
-        boxShadow: "0 6px 18px rgba(0, 0, 0, 0.15)",
+        boxShadow: `${hoverXOffset}px ${hoverYOffset}px 0px rgba(0, 0, 0, 0.12), ${hoverXOffset}px ${hoverYOffset + 4}px 30px rgba(0, 0, 0, 0.08)`,
         // We include 'rotate' here to ensure it's maintained during the hover animation.
         rotate: 0,
         zIndex: 100

@@ -83,7 +83,7 @@ export default function Hero() {
           variants={itemVariants}>
           <Card
             bgColor="#D6E5BE"
-            image="'/dtu2.webp'"
+            image="'/aditatdod.webp'"
             text="studied Bachelor of Design at DTU for 4 years"
             rotation={12.44}
           />
