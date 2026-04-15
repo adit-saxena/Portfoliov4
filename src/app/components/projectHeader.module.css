@@ -1,0 +1,43 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  /* Offset to sit right of sidebar on desktop */
+  padding: 0.75rem 1.75rem 0.75rem 1.75rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 3.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 768px) {
+  .header {
+    left: 15rem; /* matches sidebar width */
+  }
+}
+
+.resumeBtn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #111111;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.resumeBtn:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}

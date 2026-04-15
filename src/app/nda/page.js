@@ -2,12 +2,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import HeaderP from '../components/headerProjects'; // Assuming we want the same header
+import HeaderP from '../components/headerProjects';
 import styles from './internal.module.css';
-import dynamic from 'next/dynamic';
-
-const Footer = dynamic(() => import('../components/Footer/footer2'), { ssr: false });
-
 export default function NDAPage() {
     return (
         <div style={{ backgroundColor: 'white' }}>
@@ -41,7 +37,6 @@ export default function NDAPage() {
                 </div>
             </main>
 
-            <Footer />
         </div>
     );
 }

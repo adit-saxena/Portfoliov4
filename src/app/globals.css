@@ -6,17 +6,18 @@
   --foreground: #171717;
 }
 
+/* Always force light background — dark mode handled per-component */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
   cursor: url('/cursor.png'), auto;
 }
 
@@ -28,7 +29,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-main {
+/* BrandLayout manages its own main padding — don't override here */
+body > main {
   margin-top: 10vh;
 }
 

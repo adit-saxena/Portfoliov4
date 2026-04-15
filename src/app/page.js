@@ -24,12 +24,12 @@ const mainProjects = [
     id: 1, // Added id
     Tag1: "Fintech",
     Tag2: "B2B",
-    Tag3: "Dashboard",
+    Tag3: "IDP · Workflow",
     ProjectName: "KredX",
-    OneLiner: "Boosting factoring unit discovery for financiers",
-    Description: "Redesigned the core financier dashboard to improve unit visibility, reducing discovery time by 40% and increasing platform liquidity.",
+    OneLiner: "Cutting factoring unit creation time by 56%",
+    Description: "Replaced a fragile CSV + ZIP upload process with direct PDF upload and IDP auto-extraction — removing the manual steps that were costing corporate treasury teams 9 minutes per submission.",
     Url: "/KredXCover.webp", // Reuse valid existing image as placeholder
-    PageUrl: "/nda", // Updated KredX URL
+    PageUrl: "/kredx",
     backgroundColor: "#003E7E",
     isExternal: false
   },
@@ -129,6 +129,67 @@ export default function Home() {
     setIsLoading(false);
   }, [pathname]);
 
+  // ── Restore scroll position when returning from a project page ──
+  useEffect(() => {
+    const saved = sessionStorage.getItem('homeScrollY');
+
+    if (saved) {
+      const targetY = parseInt(saved, 10);
+
+      // Frosted-glass veil: GPU-composited overlay so we can instant-scroll
+      // underneath it, then fade the veil away — "arrive through fog" effect.
+      const spawnVeil = () => {
+        const veil = document.createElement('div');
+        Object.assign(veil.style, {
+          position: 'fixed',
+          inset: '0',
+          zIndex: '99999',
+          backdropFilter: 'blur(20px) brightness(1.03)',
+          WebkitBackdropFilter: 'blur(20px) brightness(1.03)',
+          background: 'rgba(255,255,255,0.55)',
+          opacity: '1',
+          transition: 'opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1)',
+          pointerEvents: 'none',
+        });
+        document.body.appendChild(veil);
+
+        // Scroll instantly underneath the veil, then dissolve it
+        requestAnimationFrame(() => {
+          window.scrollTo(0, targetY);
+          requestAnimationFrame(() => {
+            // Short hold so the eye registers the blur before it clears
+            setTimeout(() => {
+              veil.style.opacity = '0';
+              setTimeout(() => veil.remove(), 600);
+            }, 80);
+          });
+        });
+      };
+
+      // Poll until the page is tall enough to reach targetY
+      let attempts = 0;
+      const MAX = 30;
+      const tryRestore = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable >= targetY || attempts >= MAX) {
+          spawnVeil();
+        } else {
+          attempts++;
+          setTimeout(tryRestore, 50);
+        }
+      };
+      setTimeout(tryRestore, 80);
+    }
+
+    // Continuously persist scroll position while on home
+    const onScroll = () => {
+      sessionStorage.setItem('homeScrollY', String(Math.round(window.scrollY)));
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+
   const handleProjectClick = (e, url, isExternal = false, projectName = "") => {
     if (url === '#construction') {
       e.preventDefault();
@@ -150,6 +211,7 @@ export default function Home() {
 
   const handleNDASuccess = () => {
     setIsNDAModalOpen(false);
+    sessionStorage.setItem('kredx_unlocked', '1');
     setIsLoading(true);
     router.push(ndaTargetUrl);
   };
