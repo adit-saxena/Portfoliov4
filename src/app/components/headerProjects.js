@@ -8,12 +8,12 @@ export default function HeaderP({ BGColor }) {
       style={{ backgroundColor: BGColor || '#ffffff' }}
     >
       <a
-        href="./Resume_AditSaxena.pdf"
+        href="./ProductDesigner_AditSaxena.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className={styles.resumeBtn}
       >
-        Resume ↗
+        resume
       </a>
     </header>
   );

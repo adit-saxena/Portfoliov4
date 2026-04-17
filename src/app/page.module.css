@@ -64,12 +64,9 @@
 }
 
 .resumeButton {
-  /* Your styles for the resume button */
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
-  /* Example */
   border-radius: 4px;
-  /* Example */
   text-decoration: none;
   color: inherit;
 }

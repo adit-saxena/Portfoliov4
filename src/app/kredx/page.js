@@ -9,7 +9,7 @@ import {
   BrandFeatureCard,
   BrandStatItem,
   BrandCompare,
-  ImagePlaceholder,
+  BrandImageBanner,
 } from '../components/brand/BrandLayout';
 import styles from '../components/brand/brand.module.css';
 
@@ -154,11 +154,10 @@ export default function KredXPage() {
       {/* ── 02 Discovery ── */}
       <BrandSection id="discovery" variant="default">
         <BrandSectionHeader number="02" title="Discovery" titleStyle={TITLE_STYLE} />
-        <ImagePlaceholder
-          label="User Flow Map — ERP to KredX Submission"
-          caption="End-to-end journey from invoice creation in SAP S/4HANA to factoring unit submission. Every handoff, file, and manual touchpoint mapped."
-          fullBleed
-          icon="account_tree"
+        <BrandImageBanner
+          src="/FUCreationFlow.png"
+          alt="User Flow Map — ERP to KredX Submission: End-to-end journey from invoice creation in SAP S/4HANA to factoring unit submission."
+          imgStyle={{ width: '100%', height: 'auto', borderRadius: '0.5rem' }}
         />
         <p className={styles.sectionBody} style={{ marginBottom: '2.5rem' }}>
           I used four methods in sequence. Each pass narrowed the problem definition before the next.
@@ -283,11 +282,10 @@ export default function KredXPage() {
       {/* ── 04 Solution ── */}
       <BrandSection id="solution" variant="default">
         <BrandSectionHeader number="04" title="The Redesigned Flow" titleStyle={TITLE_STYLE} />
-        <ImagePlaceholder
-          label="Redesigned Factoring Unit Flow — Before & After"
-          caption="Old CSV + ZIP upload vs. new single PDF drop with IDP auto-extraction. Full Figma annotated spec."
-          fullBleed
-          icon="swap_horiz"
+        <BrandImageBanner
+          src="/idealFlow.png"
+          alt="Redesigned Factoring Unit Flow — Before & After: Old CSV + ZIP upload vs. new single PDF drop with IDP auto-extraction."
+          imgStyle={{ width: '100%', height: 'auto', borderRadius: '0.5rem' }}
         />
         <p className={styles.sectionBody} style={{ marginBottom: '2.5rem' }}>
           The new flow replaced a three-step manual process with a single upload interaction, letting IDP do the work users had been doing by hand.

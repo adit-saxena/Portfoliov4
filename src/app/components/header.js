@@ -30,7 +30,7 @@ export default function Header({ BGColor, DSColor }) {
       }}
       whileTap={{ scale: 0.9}}>
       <nav>
-        <a href="/Resume_AditSaxena.pdf" target='_blank' className={styles.resumeButton}>resume</a>
+        <a href="/ProductDesigner_AditSaxena.pdf" target='_blank' className={styles.resumeButton}>resume</a>
       </nav>
       </motion.div>
     </header>
