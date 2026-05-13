@@ -58,6 +58,12 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
 
+        <Script
+          src="https://app.splitx.live/sdk.js"
+          data-api-key="sk_live_KNV6xy6iCdTmuTcLD2iRddY54ByYSSgvajJ9-6hv7Hs"
+          strategy="afterInteractive"
+        />
+
         {/* Add the Clarity script using next/script */}
         <Script id="microsoft-clarity-init" strategy="afterInteractive" defer>
           {`
