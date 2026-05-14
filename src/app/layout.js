@@ -8,22 +8,22 @@ import Script from 'next/script'; // Import the Script component
 const geistSans = Geist({
 
   variable: "--font-geist-sans",
-  
+
   subsets: ["latin"],
-  
-  });
-  
-  
-  
-  const geistMono = Geist_Mono({
-  
+
+});
+
+
+
+const geistMono = Geist_Mono({
+
   variable: "--font-geist-mono",
-  
+
   subsets: ["latin"],
-  
-  });
-  
-  
+
+});
+
+
 
 
 
@@ -54,15 +54,16 @@ export default function RootLayout({ children }) {
             vertical-align: middle;
           }
         `}</style>
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
 
         <Script
           src="https://app.splitx.live/sdk.js"
           data-api-key="sk_live_KNV6xy6iCdTmuTcLD2iRddY54ByYSSgvajJ9-6hv7Hs"
           strategy="afterInteractive"
         />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {children}
+
 
         {/* Add the Clarity script using next/script */}
         <Script id="microsoft-clarity-init" strategy="afterInteractive" defer>
