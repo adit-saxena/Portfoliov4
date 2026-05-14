@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
           }
         `}</style>
 
-        <Script
+        <script
           src="https://app.splitx.live/sdk.js"
           data-api-key="sk_live_KNV6xy6iCdTmuTcLD2iRddY54ByYSSgvajJ9-6hv7Hs"
           strategy="afterInteractive"
