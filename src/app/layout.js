@@ -54,12 +54,11 @@ export default function RootLayout({ children }) {
             vertical-align: middle;
           }
         `}</style>
-
         <script dangerouslySetInnerHTML={{ __html: `!function(t,e){"use strict";var n=!1;function r(){if(!n){n=!0;var t=e.getElementById("__sx_af");t&&t.parentNode&&t.parentNode.removeChild(t)}}t.__sx_reveal=r,setTimeout(r,2e3);try{var o=localStorage.getItem("sx_changes_v1");if(!o)return;var a=JSON.parse(o),i=Object.keys(a);if(!i.length)return;for(var l="",s="",c=0;c<i.length;c++){var p=a[i[c]];if(p&&p.selector){var f=p.selector;if(l+=f+"{opacity:0!important;transition:none!important}",p.styles){var d="";for(var m in p.styles)Object.prototype.hasOwnProperty.call(p.styles,m)&&(d+=m+":"+p.styles[m]+"!important;");d&&(s+=f+"{"+d+"}")}if(p.text&&p._cs){var v=p._cs;s+=f+"{color:transparent!important;-webkit-text-fill-color:transparent!important;font-size:0!important}"+f+'::before{content:"'+p.text.replace(/\\/g,"\\\\").replace(/"/g,'\\"')+'";color:'+v.color+"!important;-webkit-text-fill-color:"+v.color+"!important;font-size:"+v.fontSize+"!important;font-weight:"+v.fontWeight+";font-family:"+v.fontFamily+";letter-spacing:"+v.letterSpacing+";display:block}"}}}if(!l)return;var y=e.createElement("style");if(y.id="__sx_af",y.textContent=l,(e.head||e.documentElement).appendChild(y),s){var _=e.createElement("style");_.id="__sx_v",_.textContent=s,(e.head||e.documentElement).appendChild(_)}"loading"===e.readyState?e.addEventListener("DOMContentLoaded",r):r()}catch(t){r()}}(window,document);` }} />
         <script
           async
           src="https://app.splitx.live/sdk.js"
-          data-api-key="sx_pub__3Su4JDI480glftr2IbldpBiaWESw2Usj0Mc4i3m6ps">
+          data-api-key="sx_pub_KbkZSqBK4DnH69DJuFuuNVzdjfgMoAqAjbl3849J_g4">
         </script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
