@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
         <script
           async
           src="https://app.splitx.live/sdk.js"
-          data-api-key="sx_pub_KbkZSqBK4DnH69DJuFuuNVzdjfgMoAqAjbl3849J_g4">
+          data-api-key="sx_pub_U0_SUI_HVX_hzkqRVrnDacJdyjk7oM5PI1tC6qJOAUM">
         </script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
