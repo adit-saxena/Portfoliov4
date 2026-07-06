@@ -69,7 +69,7 @@ const sideProjects = [
     ProjectName: "SplitX",
     Description: "Building a smart automated A/B Testing engine for all website owners",
     Url: "/SplitXCover.webp",
-    PageUrl: "https://app.splitx.live/signin",
+    PageUrl: "https://split-x-ai.vercel.app/",
     backgroundColor: "#F0F0F0",
     isExternal: true, // Mark as external link
     Tag1: null, // Added null tags for consistency
