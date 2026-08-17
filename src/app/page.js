@@ -27,7 +27,7 @@ const mainProjects = [
     Tag3: "Forms · Validation",
     ProjectName: "KredX",
     OneLiner: "Refining ₹20,000 crore worth of payments for 40+ businesses",
-    Description: "Turned a bulk-upload-and-pray spreadsheet into a validated real-time entry flow, after an RBI mandate pushed upload volume up 400% and failures to 90%.",
+    Description: "Turned a bulk-upload-and-pray spreadsheet into a validated real-time entry flow, after an RBI mandate pushed upload volume up 400% and failures to ~83%.",
     Url: "/ExpressCover.jpg",
     PageUrl: "/kredx-express",
     backgroundColor: "#004c6dff",

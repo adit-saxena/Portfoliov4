@@ -126,8 +126,8 @@ const FACTS = [
 
 const METRICS = [
   { value: '400%', label: 'Rise in uploads after the mandate', accent: true },
-  { value: '50–90%', label: 'Failure rate the spike exposed' },
-  { value: '24%', label: 'Bulk error rate after the fix' },
+  { value: '~83%', label: 'Failure rate the spike exposed' },
+  { value: '34%', label: 'Bulk error rate after the fix' },
   { value: '74%', label: 'Of users moved to Express' },
 ];
 
@@ -203,7 +203,7 @@ export default function KredXExpressPage() {
           <h1 className={styles.title}>Easing out ₹20,000 crore worth of payments for 40+ Enterprises</h1>
           <p className={styles.standfirst}>
             A parallel workflow that replaced a blind bulk-upload-and-pray process with a validated,
-            real-time entry flow — after an RBI mandate pushed upload volume up 400% and exposed a ~75%
+            real-time entry flow — after an RBI mandate pushed upload volume up 400% and exposed a ~83%
             failure rate.
           </p>
 
@@ -281,13 +281,20 @@ export default function KredXExpressPage() {
             <h2 className={styles.sectionTitle}>Three questions before touching design</h2>
             <p className={styles.p}>
               <strong>Is the failure rate actually bad?</strong> Total vs. failed records over 15 days in
-              Metabase: failure rates oscillating between 50 and 90%. Confirmed.
+              Metabase: a ~83% failure rate. Confirmed.
             </p>
             <p className={styles.p}>
               <strong>Learning curve, or broken process?</strong> I split the same data by user history.
               Repeat, &ldquo;learned&rdquo; users failed just as often as first-timers, which ruled out
               education and reframed the problem as the process itself.
             </p>
+
+            <Figure
+              src="/error-rate-metabase.png"
+              alt="Metabase bar chart of daily error percentage on bulk upload, July 18 to August 15"
+              caption="Daily error percentage on bulk upload, straight out of Metabase — the query the whole project was argued from, and the one it was later measured against."
+            />
+
             <p className={styles.p} style={{ marginBottom: 22 }}>
               <strong>What are people stuck on?</strong> I pulled the error distribution, then asked
               engineering and support what each error actually meant.
@@ -455,8 +462,8 @@ export default function KredXExpressPage() {
               exactly why keeping it alive and fixing it mattered.
             </p>
             <p className={styles.p} style={{ marginBottom: 28 }}>
-              Bulk upload&rsquo;s error rate is down to a five-day average of 24%, from the 50–90% range that
-              started this project, driven by the parallel template hardening.
+              Bulk upload&rsquo;s error rate is down to a five-day average of 34%, from the ~83% that started
+              this project, driven by the parallel template hardening.
             </p>
             <p className={styles.footnote}>
               Figures from the platform&rsquo;s Metabase dashboards, measured on the same queries used in the
