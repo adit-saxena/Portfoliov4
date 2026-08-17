@@ -21,6 +21,19 @@ const NDAPasswordModal = dynamic(() => import('./components/NDAPasswordModal/NDA
 
 const mainProjects = [
   {
+    id: 0,
+    Tag1: "Fintech",
+    Tag2: "Data-Led Research",
+    Tag3: "Forms · Validation",
+    ProjectName: "KredX",
+    OneLiner: "Refining ₹20,000 crore worth of payments for 40+ businesses",
+    Description: "Turned a bulk-upload-and-pray spreadsheet into a validated real-time entry flow, after an RBI mandate pushed upload volume up 400% and failures to 90%.",
+    Url: "/ExpressCover.jpg",
+    PageUrl: "/kredx-express",
+    backgroundColor: "#004c6dff",
+    isExternal: false
+  },
+  {
     id: 1, // Added id
     Tag1: "Fintech",
     Tag2: "B2B",
@@ -196,7 +209,11 @@ export default function Home() {
       setIsConstructionModalOpen(true);
       return;
     }
-    if (projectName === "KredX") {
+    // KredX case studies prompt from here. The pages themselves are unlisted
+    // rather than gated, so a shared direct link opens without the password —
+    // this only asks visitors arriving through the portfolio, and the answer
+    // is remembered on the device until they clear site data.
+    if (!isExternal && url?.startsWith('/kredx') && localStorage.getItem('kredx_unlocked') !== '1') {
       e.preventDefault();
       setNdaTargetUrl(url);
       setIsNDAModalOpen(true);
@@ -211,7 +228,7 @@ export default function Home() {
 
   const handleNDASuccess = () => {
     setIsNDAModalOpen(false);
-    sessionStorage.setItem('kredx_unlocked', '1');
+    localStorage.setItem('kredx_unlocked', '1');
     setIsLoading(true);
     router.push(ndaTargetUrl);
   };

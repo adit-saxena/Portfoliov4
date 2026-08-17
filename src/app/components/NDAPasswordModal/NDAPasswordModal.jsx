@@ -63,7 +63,7 @@ const NDAPasswordModal = ({ isOpen, onClose, onSuccess, onSecondaryAction }) => 
                             <input
                                 type="password"
                                 className={`${styles.input} ${error ? styles.inputError : ''}`}
-                                placeholder="Enter password (hiding in plain sight?)"
+                                placeholder="Enter password"
                                 value={password}
                                 onChange={(e) => {
                                     setPassword(e.target.value);

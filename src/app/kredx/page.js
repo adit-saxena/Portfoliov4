@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react'; // eslint-disable-line
-import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react'; // eslint-disable-line
 import {
   BrandLayout,
   BrandSection,
@@ -23,19 +22,13 @@ const TITLE_STYLE = {
   letterSpacing: '-0.02em',
 };
 
+/* Unlisted, not gated — see kredx-express/page.js. The password prompt lives
+   on the home page card; this route is marked noindex in layout.js. */
 export default function KredXPage() {
-  const router = useRouter();
-  const [unlocked, setUnlocked] = useState(false);
-
+  // See kredx-express/page.js — any KredX case study view marks the device.
   useEffect(() => {
-    if (sessionStorage.getItem('kredx_unlocked') === '1') {
-      setUnlocked(true);
-    } else {
-      router.replace('/');
-    }
-  }, [router]);
-
-  if (!unlocked) return null;
+    localStorage.setItem('kredx_unlocked', '1');
+  }, []);
 
   return (
     <BrandLayout
@@ -65,7 +58,7 @@ export default function KredXPage() {
         { id: 'solution', label: 'The Solution', icon: 'check_circle' },
         { id: 'outcome', label: 'Outcome', icon: 'trending_up' },
       ]}
-      nextProject={{ label: "Stage OTT →", href: '/stage' }}
+      nextProject={{ label: "KredX · Express Upload →", href: '/kredx-express' }}
       outroTitle={<>The best process is the one <BrandAccent>users don't notice.</BrandAccent></>}
       outroBody="By replacing a multi-file manual upload with a single PDF drop and letting IDP handle the rest, factoring unit creation went from a source of daily frustration to a routine background task."
 
