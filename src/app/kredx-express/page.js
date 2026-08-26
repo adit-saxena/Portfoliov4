@@ -125,7 +125,7 @@ const FACTS = [
 ];
 
 const METRICS = [
-  { value: '400%', label: 'Rise in uploads after the mandate', accent: true },
+  { value: '1400%', label: 'Rise in uploads after the mandate', accent: true },
   { value: '~83%', label: 'Failure rate the spike exposed' },
   { value: '34%', label: 'Bulk error rate after the fix' },
   { value: '74%', label: 'Of users moved to Express' },
@@ -266,7 +266,7 @@ export default function KredXExpressPage() {
             <h2 className={styles.sectionTitle}>A fallback becomes the front door</h2>
             <p className={styles.p}>
               On 30th June, RBI made it mandatory for CPSEs to route all MSME payments through TReDS.
-              Overnight, uploads rose roughly 400%, and support and PM teams started fielding a steady stream
+              Overnight, uploads rose roughly 1400%, and support and PM teams started fielding a steady stream
               of stuck users.
             </p>
             <p className={styles.inset}>
