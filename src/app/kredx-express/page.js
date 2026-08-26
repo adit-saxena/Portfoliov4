@@ -125,7 +125,7 @@ const FACTS = [
 ];
 
 const METRICS = [
-  { value: '1400%', label: 'Rise in uploads after the mandate', accent: true },
+  { value: '14x', label: 'Rise in uploads after the mandate', accent: true },
   { value: '~83%', label: 'Failure rate the spike exposed' },
   { value: '34%', label: 'Bulk error rate after the fix' },
   { value: '74%', label: 'Of users moved to Express' },
@@ -203,7 +203,7 @@ export default function KredXExpressPage() {
           <h1 className={styles.title}>Easing out ₹20,000 crore worth of payments for 40+ Enterprises</h1>
           <p className={styles.standfirst}>
             A parallel workflow that replaced a blind bulk-upload-and-pray process with a validated,
-            real-time entry flow — after an RBI mandate pushed upload volume up 400% and exposed a ~83%
+            real-time entry flow — after an RBI mandate pushed upload volume up 14x and exposed a ~83%
             failure rate.
           </p>
 
@@ -266,7 +266,7 @@ export default function KredXExpressPage() {
             <h2 className={styles.sectionTitle}>A fallback becomes the front door</h2>
             <p className={styles.p}>
               On 30th June, RBI made it mandatory for CPSEs to route all MSME payments through TReDS.
-              Overnight, uploads rose roughly 1400%, and support and PM teams started fielding a steady stream
+              Overnight, uploads rose roughly 14x, and support and PM teams started fielding a steady stream
               of stuck users.
             </p>
             <p className={styles.inset}>
