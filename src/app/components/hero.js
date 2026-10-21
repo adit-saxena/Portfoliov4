@@ -35,7 +35,7 @@ export default function Hero() {
       >
         {/* 1. Link */}
         <motion.a
-          href="/stage"
+          href="/kredx-express"
           variants={itemVariants}
           className={styles.cuttochase}
           whileHover={{
