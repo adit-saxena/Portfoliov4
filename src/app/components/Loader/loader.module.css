@@ -1,128 +1,74 @@
+/* Covers the home page while a case study loads; the case study's own page
+   styles (ground colour, rules, type sizes) come from caseStudy.module.css. */
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  /* Solid Black for high contrast wireframe feel */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  inset: 0;
   z-index: 9999;
-}
-
-.wireframeContainer {
-  width: 140px;
-  height: 180px;
-  border: 2px solid #333;
-  /* Dark grey base */
-  border-radius: 8px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  position: relative;
-  box-sizing: border-box;
-  animation: borderFlash 2s infinite;
-}
-
-.wireframeHeader {
-  width: 100%;
-  height: 80px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  position: relative;
   overflow: hidden;
+  animation: fadeIn 0.18s ease-out both;
 }
 
-/* Diagonal cross for image placeholder wireframe */
-.wireframeHeader::before,
-.wireframeHeader::after {
+/* A text line drawn as a bar: one line-height tall, with the bar filling
+   the x-height band in the middle, so stacked bars keep the type's rhythm. */
+.line {
+  display: block;
+  height: 1.2em;
+  height: 1lh;
+  position: relative;
+  max-width: 100%;
+}
+
+.line::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-top: 1px solid #333;
-  transform-origin: center;
+  inset: 26% 0;
+  background: var(--rule);
+  animation: pulse 1.4s ease-in-out infinite;
 }
 
-.wireframeHeader::before {
-  transform: rotate(32deg) scale(1.5);
+/* Stagger so the pulse travels down the page instead of blinking at once */
+.line:nth-child(2)::before {
+  animation-delay: 0.12s;
 }
 
-.wireframeHeader::after {
-  transform: rotate(-32deg) scale(1.5);
+.line:nth-child(3)::before {
+  animation-delay: 0.24s;
 }
 
-.wireframeBody {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.line:nth-child(4)::before {
+  animation-delay: 0.36s;
 }
 
-.line {
-  height: 8px;
-  background: #333;
-  border-radius: 2px;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-.line:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.line:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.text {
-  margin-top: 32px;
-  font-family: "Space Grotesk", sans-serif;
-  /* Techy font */
-  font-size: 0.9rem;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  animation: blink 1s infinite alternate;
-}
-
-/* Animations */
-@keyframes borderFlash {
-
-  0%,
-  100% {
-    border-color: #333;
-    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-  }
-
-  50% {
-    border-color: #fff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  }
+/* The takeaway line's rule takes the page accent, which the loader doesn't
+   know yet */
+.overlay .insight {
+  border-left-color: var(--rule);
 }
 
 @keyframes pulse {
-
   0%,
   100% {
-    background: #333;
+    opacity: 1;
   }
 
   50% {
-    background: #fff;
+    opacity: 0.45;
   }
 }
 
-@keyframes blink {
+@keyframes fadeIn {
   from {
-    opacity: 0.4;
+    opacity: 0;
   }
 
   to {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .line::before {
+    animation: none;
   }
 }
