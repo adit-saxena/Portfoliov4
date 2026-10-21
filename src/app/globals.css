@@ -29,7 +29,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* BrandLayout manages its own main padding — don't override here */
 body > main {
   margin-top: 10vh;
 }

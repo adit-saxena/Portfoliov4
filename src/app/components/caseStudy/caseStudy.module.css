@@ -1,7 +1,7 @@
 /* ============================================================
-   TReDS Invoice Upload — case study
+   Case study pages
    Design: "Minimal" variant of the Modernist design system,
-   accent overridden to KredX deep teal.
+   accent defaulting to KredX deep teal; pages override --accent.
    Archivo throughout · zero radius · hairline rules.
    ============================================================ */
 
@@ -253,10 +253,22 @@
   text-wrap: pretty;
 }
 
+/* Second line under the standfirst — the one-sentence takeaway */
+.insight {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body-soft);
+  max-width: 60ch;
+  margin: 22px 0 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--accent);
+  text-wrap: pretty;
+}
+
 /* Fact strip under the header */
 .facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--fact-cols, 4), minmax(0, 1fr));
   gap: 24px;
   margin: 64px 0 0;
   padding-top: 22px;
@@ -328,6 +340,30 @@
   line-height: 1.5;
 }
 
+/* Square or portrait shots would fill a whole screen at column width */
+.figureNarrow {
+  margin: 28px 0;
+  max-width: 520px;
+}
+
+/* Two related shots side by side, stacking on phones */
+.figurePair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 28px 0;
+}
+
+.figurePair .figure {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .figurePair {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── Metrics strip ───────────────────────────────────────── */
 .metrics {
   display: grid;
@@ -363,6 +399,27 @@
   line-height: 1.45;
   color: var(--meta);
   margin-top: 8px;
+}
+
+/* In-section figures — the metrics strip's type, sized down to the prose */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin: 4px 0 28px;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.stats .metricValue {
+  color: var(--accent);
+}
+
+@media (max-width: 620px) {
+  .stats {
+    gap: 20px;
+  }
 }
 
 /* ── Body ────────────────────────────────────────────────── */
@@ -529,6 +586,14 @@
   padding: 40px 0;
 }
 
+.statementLabel {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--meta-light);
+  margin-bottom: 14px;
+}
+
 .statementQuote {
   font-weight: 600;
   font-size: clamp(30px, 6vw, 40px);
@@ -587,6 +652,14 @@
   margin: 8px 0;
 }
 
+.optionMeta {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
 .optionBody {
   margin: 0;
   font-size: 15px;
@@ -594,9 +667,23 @@
   color: var(--body-muted);
 }
 
+.optionBody strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
 /* ── Feature list ────────────────────────────────────────── */
 .features {
   margin: 32px 0;
+}
+
+/* Heading for a list that isn't introduced by the paragraph above it */
+.listLabel {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--meta-light);
+  margin: 32px 0 -20px;
 }
 
 .feature {
