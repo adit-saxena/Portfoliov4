@@ -24,8 +24,8 @@ const FACTS = [
 ];
 
 const METRICS = [
-  { value: '+21%', label: 'Trial starts on the winning paywall', accent: true },
-  { value: '−27%', label: 'Refund requests per 1,000 trials' },
+  { value: '+21%', label: 'Paywall conversion on the winning variant', accent: true },
+  { value: '−0.5 pts', label: 'Checkout → trial start, within noise' },
   { value: '9', label: 'Paywall screens across 7 formulas' },
   { value: '13', label: 'Elements, in 6 groups' },
 ];
@@ -49,7 +49,7 @@ function Hero() {
       <div className={p.heroShift}>
         <span className={p.heroArrow} aria-hidden="true">→</span>
         <span className={p.heroValue}>+21%</span>
-        <span className={p.heroNote}>trial starts</span>
+        <span className={p.heroNote}>paywall conversion</span>
       </div>
       <Phone
         src={`${IMG}/pw-v7.webp`}
@@ -172,7 +172,7 @@ function FoggChart() {
 
         <path d={ACTION_LINE} fill="none" stroke="var(--accent)" strokeWidth="2" />
         <text x="540" y="282" fontSize="12" fill="var(--accent)" textAnchor="end">action line</text>
-        <text x="520" y="40" fontSize="12" fill="var(--meta)" textAnchor="end">Prompt lands → they start a trial</text>
+        <text x="520" y="40" fontSize="12" fill="var(--meta)" textAnchor="end">Prompt lands → they tap through to checkout</text>
         <text x="64" y="308" fontSize="12" fill="var(--meta-light)">Prompt ignored</text>
 
         {/* What the variants do: push the drop-offs over the line */}
@@ -301,15 +301,15 @@ const SETUP = [
   ['Control', 'Last stable paywall'],
   ['Split', 'Even, control + 7 variants'],
   ['Duration', '21 days'],
-  ['Primary metric', 'Paywall → trial start'],
-  ['Guardrail', 'Refund requests per 1,000 trials'],
+  ['Primary metric', 'Paywall conversion (paywall → checkout)'],
+  ['Guardrail', 'Checkout → trial start rate'],
   ['Sample size', '~14k paywall visitors, ~1,750 per arm'],
 ];
 
 const RESULTS = [
-  { value: '+21%', label: 'Trial starts, V7 vs control' },
-  { value: '18.4% → 22.3%', label: 'Paywall → trial start rate' },
-  { value: '−27%', label: 'Refund requests per 1,000 trials, V7 vs control' },
+  { value: '+21%', label: 'Paywall conversion, V7 vs control' },
+  { value: '18.4% → 22.3%', label: 'Paywall → checkout rate' },
+  { value: '61.4% → 60.9%', label: 'Checkout → trial start, V7 vs control — held' },
 ];
 
 const LEARNINGS = [
@@ -355,7 +355,7 @@ export default function StagePaywallPage() {
         <p className={styles.pLast}>
           STAGE streams films and series in Haryanvi, Rajasthani and Bhojpuri. ~74% of new users arrive from
           an ad, land on a paywall, and pay ₹1 for a 7-day trial — set up as a UPI autopay that renews at
-          ₹199 for three months. That screen is where an ad&rsquo;s promise either turns into a trial, or
+          ₹199 for three months. That screen is where an ad&rsquo;s promise either carries through to checkout, or
           doesn&rsquo;t.
         </p>
       </Section>
