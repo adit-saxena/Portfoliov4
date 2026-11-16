@@ -903,6 +903,80 @@
   }
 }
 
+/* ── Final results: initial → final per KPI ──────────────── */
+.final {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 28px;
+}
+
+@media (max-width: 700px) {
+  .final {
+    grid-template-columns: 1fr;
+  }
+}
+
+.finalCard {
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--meta-light);
+  background: #fff;
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.finalGood {
+  border-top-color: var(--accent);
+}
+
+.finalKpi {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.finalValues {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.finalFrom {
+  font-size: 18px;
+  color: var(--meta-light);
+}
+
+.finalArrow {
+  color: var(--meta-light);
+}
+
+.finalTo {
+  font-weight: 600;
+  font-size: clamp(30px, 5vw, 38px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.finalGood .finalTo {
+  color: var(--accent);
+}
+
+.finalDelta {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  background: var(--mat);
+  color: var(--meta);
+}
+
+.finalGood .finalDelta {
+  background: var(--accent-100);
+  color: var(--accent);
+}
+
 /* ── Test setup grid ─────────────────────────────────────── */
 .setup {
   display: grid;

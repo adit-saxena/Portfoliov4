@@ -16,6 +16,7 @@ const SECTIONS = [
   { id: 'testing', num: '08', label: 'Paywall results' },
   { id: 'checkout', num: '09', label: 'Part 3 · Checkout' },
   { id: 'learnings', num: '10', label: 'Learnings' },
+  { id: 'results', num: '11', label: 'Final results' },
 ];
 
 const FACTS = [
@@ -27,7 +28,7 @@ const FACTS = [
 
 const METRICS = [
   { value: '+21%', label: 'Paywall conversion on the winning variant', accent: true },
-  { value: '−0.5 pts', label: 'Checkout → trial start, within noise' },
+  { value: '−58%', label: 'Refund requests per 1,000 trials' },
   { value: '9', label: 'Paywall screens across 7 formulas' },
   { value: '13', label: 'Elements, in 6 groups' },
 ];
@@ -351,6 +352,14 @@ const RESULTS = [
   { value: '61.4% → 60.9%', label: 'Checkout → trial start, V7 vs control — held' },
 ];
 
+/* End to end: the last stable paywall + checkout against V7 + the Part 3
+   checkout. `good` marks the direction we wanted each one to move. */
+const FINAL = [
+  { kpi: 'Paywall conversion', sub: 'Paywall → checkout', from: '18.4%', to: '22.3%', delta: '+21%', good: true },
+  { kpi: 'Checkout conversion', sub: 'Checkout → trial start', from: '64.2%', to: '62.8%', delta: '−1.4 pts', good: false },
+  { kpi: 'Refund requests', sub: 'Per 1,000 trials', from: '38', to: '16', delta: '−58%', good: true },
+];
+
 const LEARNINGS = [
   {
     title: 'A fixed spine makes variants readable',
@@ -666,6 +675,37 @@ export default function StagePaywallPage() {
           quote="Clear beats clever."
           note="The ₹1 offer was never the problem. The surprise ₹199 was — so we showed it first, and framed it plainly."
         />
+      </Section>
+
+      {/* ── 11 Final results ── */}
+      <Section id="results" title="Where it landed">
+        <p className={styles.p} style={{ marginBottom: 24 }}>
+          From the last stable paywall and checkout to V7 with the Part 3 checkout:
+        </p>
+
+        <div className={p.final}>
+          {FINAL.map(({ kpi, sub, from, to, delta, good }) => (
+            <div key={kpi} className={`${p.finalCard} ${good ? p.finalGood : ''}`}>
+              <div className={p.finalKpi}>{kpi}</div>
+              <div className={p.label}>{sub}</div>
+              <div className={p.finalValues}>
+                <span className={p.finalFrom}>{from}</span>
+                <span className={p.finalArrow} aria-hidden="true">→</span>
+                <span className={p.finalTo}>{to}</span>
+              </div>
+              <span className={p.finalDelta}>{delta}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className={styles.p}>
+          Going transparent cost a little at checkout, as expected — and far more than paid for itself.
+          More people crossed the paywall, nearly as many finished at checkout, and fewer asked for their
+          money back. Net, that&rsquo;s about 19% more trial starts per paywall visitor.
+        </p>
+        <p className={styles.footnote}>
+          Figures are rounded and indicative, shared within STAGE&rsquo;s confidentiality limits.
+        </p>
       </Section>
 
     </CaseStudy>
