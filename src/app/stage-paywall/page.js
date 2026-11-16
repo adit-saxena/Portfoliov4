@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CaseStudy, Section, Figure, Statement, Features, Stats, styles } from '../components/caseStudy/CaseStudy';
 import p from './paywall.module.css';
 
@@ -9,16 +9,18 @@ const SECTIONS = [
   { id: 'context', num: '01', label: 'Context' },
   { id: 'signal', num: '02', label: 'The signal' },
   { id: 'journey', num: '03', label: 'Existing journey' },
-  { id: 'users', num: '04', label: 'User interviews' },
-  { id: 'model', num: '05', label: 'Behaviour model' },
-  { id: 'variants', num: '06', label: 'Variants' },
-  { id: 'testing', num: '07', label: 'Testing & stats' },
-  { id: 'learnings', num: '08', label: 'Learnings' },
+  { id: 'part-1', num: '04', label: 'Part 1 · ₹199 on checkout' },
+  { id: 'users', num: '05', label: 'User interviews' },
+  { id: 'model', num: '06', label: 'Behaviour model' },
+  { id: 'variants', num: '07', label: 'Part 2 · Paywall' },
+  { id: 'testing', num: '08', label: 'Paywall results' },
+  { id: 'checkout', num: '09', label: 'Part 3 · Checkout' },
+  { id: 'learnings', num: '10', label: 'Learnings' },
 ];
 
 const FACTS = [
   { key: 'Role', val: 'Product designer' },
-  { key: 'Surface', val: 'Trial paywall' },
+  { key: 'Surface', val: 'Trial paywall & checkout' },
   { key: 'Audience', val: 'Haryanvi, Rajasthani & Bhojpuri viewers arriving from ads' },
   { key: 'Method', val: 'User calls · Fogg model · A/B tests' },
 ];
@@ -33,6 +35,34 @@ const METRICS = [
 function Phone({ src, alt, caption }) {
   return <Figure className={p.phone} src={src} alt={alt} caption={caption} />;
 }
+
+/* A screen that may not be in /public yet — holds its place with a labelled
+   box instead of a broken image until the file lands. */
+function PendingPhone({ src, alt, caption }) {
+  const [missing, setMissing] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onerror = () => setMissing(true);
+    img.src = src;
+  }, [src]);
+
+  if (!missing) return <Phone src={src} alt={alt} caption={caption} />;
+  return (
+    <figure className={p.phone}>
+      <div className={p.slot}>Screenshot to add<code>{src}</code></div>
+      <figcaption className={styles.caption}>{caption}</figcaption>
+    </figure>
+  );
+}
+
+/* The fix in three parts: one direct launch for context, then two
+   experiment phases. */
+const PARTS = [
+  { part: 'Part 1', surface: 'Checkout', how: 'Direct launch, no A/B', what: '₹199 shown plainly on checkout', tag: 'Rolled back' },
+  { part: 'Part 2', surface: 'Paywall', how: 'Phase 1 · 7 variants vs control', what: 'Say ₹199 clearly, and show what it buys', tag: 'V7 shipped · +21%', win: true },
+  { part: 'Part 3', surface: 'Checkout', how: 'Phase 2 · 6 variants', what: 'Win back the checkouts transparency costs', tag: 'Followed Part 2' },
+];
 
 /* ── Hero: where it started, where it landed ── */
 function Hero() {
@@ -276,18 +306,27 @@ const VARIANTS = [
   { id: 'V7', code: 'ABCDF1F2F3F4G2', on: [1, 1, 1, 1, 1], screens: ['pw-v7'], note: 'Everything on', win: true },
 ];
 
-function Strip({ items, path }) {
+const CHECKOUT = [
+  { id: 'C1', label: 'All fixed elements', screens: ['co-1'] },
+  { id: 'C2', label: 'Refund information', screens: ['co-2'] },
+  { id: 'C2.1', label: 'Refund information', screens: ['co-2-1'] },
+  { id: 'C3', label: 'Autopay, explained', screens: ['co-3', 'co-3-sheet'] },
+  { id: 'C4', label: 'Today’s trial count', screens: ['co-4'] },
+  { id: 'C5', label: 'Testimonial', screens: ['co-5'] },
+];
+
+function Strip({ items, path, kind }) {
   return (
     <div className={p.strip}>
-      {items.map(({ id, code, note, screens, win }) => (
+      {items.map(({ id, code, label, note, screens, win }) => (
         <div key={id} className={`${p.variant} ${win ? p.variantWin : ''}`}>
           <div className={p.variantHead}>
             <span className={p.variantId}>{id}</span>
-            {win ? <span className={p.win}>Winner</span> : <span className={p.variantCode}>{code}</span>}
+            {win ? <span className={p.win}>Winner</span> : <span className={p.variantCode}>{code || label}</span>}
           </div>
           <div className={p.variantPhones}>
             {screens.map((s) => (
-              <Phone key={s} src={`${path}/${s}.webp`} alt={`Paywall variant ${id}`} />
+              <Phone key={s} src={`${path}/${s}.webp`} alt={`${kind} variant ${id}`} />
             ))}
           </div>
           {note && <div className={p.variantNote}>{note}</div>}
@@ -326,6 +365,10 @@ const LEARNINGS = [
     body: 'The UPI mandate will always show ₹199. The fix was making sure it was the second time the user saw it, not the first.',
   },
   {
+    title: 'Transparency needs value beside it',
+    body: 'Part 1 showed ₹199 honestly and lost people at checkout. It only worked once the paywall showed what ₹199 buys.',
+  },
+  {
     title: 'Talk to both sides of the funnel',
     body: 'People who left told us what was broken. People who stayed told us what to put first.',
   },
@@ -336,12 +379,12 @@ export default function StagePaywallPage() {
     <CaseStudy
       accent="#c0392b"
       sections={SECTIONS}
-      eyebrow="STAGE OTT · Paywall A/B testing"
+      eyebrow="STAGE OTT · Paywall & checkout A/B testing"
       title="Getting 21% more people across the paywall"
       standfirst={<>
-        Users signed up for a ₹1 trial, then their UPI app asked them to approve a ₹199 autopay. I broke
-        the paywall into fixed and optional elements and A/B tested seven combinations against the last
-        stable version.
+        Users signed up for a ₹1 trial, then their UPI app asked them to approve a ₹199 autopay. Showing
+        ₹199 at checkout alone drove people away, so we fixed it in two experiment phases: first the
+        paywall, split-tested from modular components, then the checkout.
       </>}
       insight="People weren’t rejecting the price. They were rejecting a price they hadn’t been shown."
       facts={FACTS}
@@ -404,7 +447,48 @@ export default function StagePaywallPage() {
         </div>
       </Section>
 
-      {/* ── 04 User interviews ── */}
+      {/* ── 04 Part 1: ₹199 on checkout ── */}
+      <Section id="part-1" title="Part 1: put ₹199 on the checkout">
+        <div className={p.hypothesis}>
+          <div className={p.label}>Hypothesis</div>
+          <p>
+            Refunds and checkout drop-offs come from one gap: ₹199 isn&rsquo;t on our checkout, so the first
+            time people see it is inside their UPI app.
+          </p>
+        </div>
+
+        <div className={p.pair}>
+          <Phone
+            src={`${IMG}/stable-checkout.webp`}
+            alt="Last stable checkout"
+            caption="Before — ₹199 buried in grey fine print."
+          />
+          <PendingPhone
+            src={`${IMG}/checkout-199.webp`}
+            alt="Part 1 checkout, with the ₹199 renewal on its own line"
+            caption="Part 1 — “after 7 days: ₹199 for 3 months” as its own line."
+          />
+        </div>
+
+        <p className={styles.p} style={{ marginTop: 28 }}>
+          It went straight to everyone, with no A/B test. Checkout drop-offs climbed, and we rolled it back.
+          Being upfront about ₹199 wasn&rsquo;t enough on its own — people also needed a reason to pay it.
+        </p>
+
+        <div className={p.label} style={{ margin: '36px 0 12px' }}>The fix, in three parts — one launch, then two experiment phases</div>
+        <ol className={p.parts}>
+          {PARTS.map(({ part, surface, how, what, tag, win }) => (
+            <li key={part} className={`${p.partCard} ${win ? p.partWin : ''}`}>
+              <div className={p.partHead}><span>{part}</span><span>{surface}</span></div>
+              <div className={p.partHow}>{how}</div>
+              <div className={p.partWhat}>{what}</div>
+              <span className={p.partTag}>{tag}</span>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      {/* ── 05 User interviews ── */}
       <Section id="users" title="Calling both sides of the paywall">
         <p className={styles.p} style={{ marginBottom: 28 }}>
           I called users from two groups — people who reached the paywall or the UPI step and left, and
@@ -439,11 +523,11 @@ export default function StagePaywallPage() {
 
         <Statement
           quote="Leaving was about clarity. Staying was about content."
-          note="None of the reasons for leaving was the ₹1 itself. People couldn’t tell what they’d be charged, or what they were paying for."
+          note="So the hypothesis grew: say ₹199 clearly, and show what it buys — on the paywall, before anyone reaches checkout."
         />
       </Section>
 
-      {/* ── 05 Behaviour model ── */}
+      {/* ── 06 Behaviour model ── */}
       <Section id="model" title="Under the line, not out of the market">
         <p className={styles.p} style={{ marginBottom: 24 }}>
           BJ Fogg&rsquo;s model says a behaviour happens when motivation, ability and a prompt meet. The
@@ -481,11 +565,13 @@ export default function StagePaywallPage() {
         </div>
       </Section>
 
-      {/* ── 06 Variants ── */}
-      <Section id="variants" title="A paywall built from parts">
+      {/* ── 07 Part 2: paywall experiments ── */}
+      <Section id="variants" title="Part 2: a paywall built from parts">
         <p className={styles.p} style={{ marginBottom: 24 }}>
-          Instead of designing whole new pages, I broke the paywall into elements. Fixed ones form the
-          spine every variant shares; optional ones are switched on and off. Each variant is just a formula.
+          The first phase tested the paywall. Every arm ran with the ₹199 checkout from Part 1, so the
+          paywall was the only thing that changed. Instead of designing whole new pages, I broke it into
+          elements: fixed ones form the spine every variant shares; optional ones are switched on and off.
+          Each variant is just a formula.
         </p>
 
         <div className={p.kit}>
@@ -509,7 +595,7 @@ export default function StagePaywallPage() {
         </div>
 
         <div className={p.label}>Nine screens, seven formulas — scroll →</div>
-        <Strip items={VARIANTS} path={IMG} />
+        <Strip items={VARIANTS} path={IMG} kind="Paywall" />
 
         <div className={p.matrixWrap}>
           <table className={p.matrix}>
@@ -540,8 +626,8 @@ export default function StagePaywallPage() {
         </p>
       </Section>
 
-      {/* ── 07 Testing & stats ── */}
-      <Section id="testing" title="How the variants were judged">
+      {/* ── 08 Paywall results ── */}
+      <Section id="testing" title="How the paywall variants were judged">
         <dl className={p.setup}>
           {SETUP.map(([k, v]) => (
             <div key={k}>
@@ -562,7 +648,17 @@ export default function StagePaywallPage() {
         </p>
       </Section>
 
-      {/* ── 08 Learnings ── */}
+      {/* ── 09 Part 3: checkout experiments ── */}
+      <Section id="checkout" title="Part 3: winning back the checkout">
+        <p className={styles.p} style={{ marginBottom: 24 }}>
+          Going transparent was always going to cost some checkouts. With the paywall settled, the second
+          phase tested checkout variants to win them back — each adding one reassurance on top of the
+          ₹199 timeline.
+        </p>
+        <Strip items={CHECKOUT} path={IMG} kind="Checkout" />
+      </Section>
+
+      {/* ── 10 Learnings ── */}
       <Section id="learnings" title="What stuck">
         <Features items={LEARNINGS} />
 
