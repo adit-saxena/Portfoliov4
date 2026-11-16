@@ -171,7 +171,10 @@ export function CaseStudy({
           </header>
         </div>
 
-        {hero && <Figure className={styles.heroFigure} {...hero} />}
+        {/* A screenshot's props, or a composed visual passed as an element */}
+        {hero && (React.isValidElement(hero)
+          ? <div className={styles.heroFigure}>{hero}</div>
+          : <Figure className={styles.heroFigure} {...hero} />)}
 
         <div className={styles.shell}>
 
@@ -255,9 +258,12 @@ export function Features({ items, label }) {
 }
 
 /* ── A pair of figures inside a section ── */
-export function Stats({ items }) {
+export function Stats({ items, cols }) {
   return (
-    <div className={styles.stats}>
+    <div
+      className={`${styles.stats} ${cols ? styles.statsCols : ''}`}
+      style={cols ? { '--stat-cols': cols } : undefined}
+    >
       {items.map(({ value, label }) => (
         <div key={label}>
           <div className={styles.metricValue}>{value}</div>

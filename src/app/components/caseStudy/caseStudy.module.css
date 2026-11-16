@@ -416,9 +416,18 @@
   color: var(--accent);
 }
 
+/* A set count across, for rows that don't pair up; stacks on phones */
+.statsCols {
+  grid-template-columns: repeat(var(--stat-cols), minmax(0, 1fr));
+}
+
 @media (max-width: 620px) {
   .stats {
     gap: 20px;
+  }
+
+  .statsCols {
+    grid-template-columns: 1fr;
   }
 }
 

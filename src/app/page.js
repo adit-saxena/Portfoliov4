@@ -47,6 +47,19 @@ const mainProjects = [
     isExternal: false
   },
   {
+    id: 6,
+    Tag1: "A/B Testing",
+    Tag2: "User Interviews",
+    Tag3: "Behaviour Design",
+    ProjectName: "Stage OTT",
+    OneLiner: "Getting 21% more people across the paywall",
+    Description: "Split-tested a paywall rebuilt from modular components, after users who signed up for ₹1 found their UPI app asking for ₹199.",
+    Url: "/StagePaywallCard.webp",
+    PageUrl: "/stage-paywall",
+    backgroundColor: "#420e0eff",
+    isExternal: false
+  },
+  {
     id: 2, // Added id
     Tag1: "Engagement 📈",
     Tag2: "Wireframing",
@@ -246,7 +259,7 @@ export default function Home() {
       <section className={styles.work}>
         {/* Main Projects Loop */}
         {mainProjects.map((project, index) => (
-          <AnimatedCard key={project.ProjectName} delay={index * 0.1}>
+          <AnimatedCard key={project.id} delay={index * 0.1}>
             <motion.div
               id={`project-${project.ProjectName.replace(/\s+/g, '-')}`}
               initial={index === 0 ? { opacity: 0, y: 200, scale: 1 } : {}}
