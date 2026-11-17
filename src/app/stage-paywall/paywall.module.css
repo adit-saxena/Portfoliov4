@@ -742,6 +742,73 @@
   scrollbar-color: var(--rule) transparent;
 }
 
+/* Right-edge fade + bouncing arrow while the strip has more to scroll */
+.stripWrap {
+  position: relative;
+}
+
+.stripFade,
+.stripArrow {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.stripMore .stripFade,
+.stripMore .stripArrow {
+  opacity: 1;
+}
+
+.stripMore .stripArrow {
+  pointer-events: auto;
+}
+
+.stripFade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 18px; /* stop above the scrollbar */
+  width: 140px;
+  background: linear-gradient(to right, rgba(251, 250, 249, 0), var(--ground) 85%);
+}
+
+.stripArrow {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--accent);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(26, 28, 28, 0.08);
+}
+
+.stripMore .stripArrow {
+  animation: nudge 1.4s ease-in-out infinite;
+}
+
+.stripArrow:hover {
+  border-color: var(--accent);
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stripMore .stripArrow {
+    animation: none;
+  }
+}
+
 .variant {
   flex: none;
   scroll-snap-align: start;

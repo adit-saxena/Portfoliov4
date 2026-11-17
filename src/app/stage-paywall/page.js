@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { CaseStudy, Section, Figure, Statement, Features, Stats, styles } from '../components/caseStudy/CaseStudy';
+import React, { useEffect, useRef, useState } from 'react';
+import { CaseStudy, Section, Figure, Statement, Stats, styles } from '../components/caseStudy/CaseStudy';
 import p from './paywall.module.css';
 
 const IMG = '/stage-paywall';
@@ -15,8 +15,7 @@ const SECTIONS = [
   { id: 'variants', num: '07', label: 'Part 2 · Paywall' },
   { id: 'testing', num: '08', label: 'Paywall results' },
   { id: 'checkout', num: '09', label: 'Part 3 · Checkout' },
-  { id: 'learnings', num: '10', label: 'Learnings' },
-  { id: 'results', num: '11', label: 'Final results' },
+  { id: 'results', num: '10', label: 'Final results' },
 ];
 
 const FACTS = [
@@ -316,23 +315,49 @@ const CHECKOUT = [
   { id: 'C5', label: 'Testimonial', screens: ['co-5'] },
 ];
 
+/* Horizontally scrolling row of screens. A fade and a bouncing arrow on the
+   right edge say there's more; both go once the row is scrolled to its end
+   (or never overflowed), so the last screen isn't left half-covered. */
 function Strip({ items, path, kind }) {
+  const ref = useRef(null);
+  const [more, setMore] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    const update = () => setMore(el.scrollLeft + el.clientWidth < el.scrollWidth - 8);
+    update();
+    el.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      el.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  const next = () => ref.current.scrollBy({ left: ref.current.clientWidth * 0.6, behavior: 'smooth' });
+
   return (
-    <div className={p.strip}>
-      {items.map(({ id, code, label, note, screens, win }) => (
-        <div key={id} className={`${p.variant} ${win ? p.variantWin : ''}`}>
-          <div className={p.variantHead}>
-            <span className={p.variantId}>{id}</span>
-            {win ? <span className={p.win}>Winner</span> : <span className={p.variantCode}>{code || label}</span>}
+    <div className={`${p.stripWrap} ${more ? p.stripMore : ''}`}>
+      <div className={p.strip} ref={ref}>
+        {items.map(({ id, code, label, note, screens, win }) => (
+          <div key={id} className={`${p.variant} ${win ? p.variantWin : ''}`}>
+            <div className={p.variantHead}>
+              <span className={p.variantId}>{id}</span>
+              {win ? <span className={p.win}>Winner</span> : <span className={p.variantCode}>{code || label}</span>}
+            </div>
+            <div className={p.variantPhones}>
+              {screens.map((s) => (
+                <Phone key={s} src={`${path}/${s}.webp`} alt={`${kind} variant ${id}`} />
+              ))}
+            </div>
+            {note && <div className={p.variantNote}>{note}</div>}
           </div>
-          <div className={p.variantPhones}>
-            {screens.map((s) => (
-              <Phone key={s} src={`${path}/${s}.webp`} alt={`${kind} variant ${id}`} />
-            ))}
-          </div>
-          {note && <div className={p.variantNote}>{note}</div>}
-        </div>
-      ))}
+        ))}
+      </div>
+      <div className={p.stripFade} aria-hidden="true" />
+      <button type="button" className={p.stripArrow} onClick={next} aria-label="Scroll to more screens" tabIndex={more ? 0 : -1}>
+        →
+      </button>
     </div>
   );
 }
@@ -358,29 +383,6 @@ const FINAL = [
   { kpi: 'Paywall conversion', sub: 'Paywall → checkout', from: '18.4%', to: '22.3%', delta: '+21%', good: true },
   { kpi: 'Checkout conversion', sub: 'Checkout → trial start', from: '64.2%', to: '62.8%', delta: '−1.4 pts', good: false },
   { kpi: 'Refund requests', sub: 'Per 1,000 trials', from: '38', to: '16', delta: '−58%', good: true },
-];
-
-const LEARNINGS = [
-  {
-    title: 'A fixed spine makes variants readable',
-    body: 'Holding eight elements constant meant each winner pointed at something specific, instead of at “a different page.”',
-  },
-  {
-    title: 'Answer every doubt on one screen',
-    body: 'V7, with every element on, beat every leaner variant. For a cautious first-time payer, more reassurance wasn’t clutter.',
-  },
-  {
-    title: 'Never let another app say the price first',
-    body: 'The UPI mandate will always show ₹199. The fix was making sure it was the second time the user saw it, not the first.',
-  },
-  {
-    title: 'Transparency needs value beside it',
-    body: 'Part 1 showed ₹199 honestly and lost people at checkout. It only worked once the paywall showed what ₹199 buys.',
-  },
-  {
-    title: 'Talk to both sides of the funnel',
-    body: 'People who left told us what was broken. People who stayed told us what to put first.',
-  },
 ];
 
 export default function StagePaywallPage() {
@@ -667,17 +669,7 @@ export default function StagePaywallPage() {
         <Strip items={CHECKOUT} path={IMG} kind="Checkout" />
       </Section>
 
-      {/* ── 10 Learnings ── */}
-      <Section id="learnings" title="What stuck">
-        <Features items={LEARNINGS} />
-
-        <Statement
-          quote="Clear beats clever."
-          note="The ₹1 offer was never the problem. The surprise ₹199 was — so we showed it first, and framed it plainly."
-        />
-      </Section>
-
-      {/* ── 11 Final results ── */}
+      {/* ── 10 Final results ── */}
       <Section id="results" title="Where it landed">
         <p className={styles.p} style={{ marginBottom: 24 }}>
           From the last stable paywall and checkout to V7 with the Part 3 checkout:
@@ -706,6 +698,13 @@ export default function StagePaywallPage() {
         <p className={styles.footnote}>
           Figures are rounded and indicative, shared within STAGE&rsquo;s confidentiality limits.
         </p>
+
+        <div style={{ marginTop: 56 }}>
+          <Statement
+            quote="Clear beats clever."
+            note="The ₹1 offer was never the problem. The surprise ₹199 was — so we showed it first, and framed it plainly."
+          />
+        </div>
       </Section>
 
     </CaseStudy>
